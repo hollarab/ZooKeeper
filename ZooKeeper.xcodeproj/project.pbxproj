@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A87E0AE11C6471E700C7CBE5 /* AnimalFactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87E0AE01C6471E700C7CBE5 /* AnimalFactoryTest.swift */; };
+		A87E0AE21C64745100C7CBE5 /* zoo.json in Resources */ = {isa = PBXBuildFile; fileRef = A882D1391C6458DB009344EA /* zoo.json */; };
 		A882D1011C6452F9009344EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D1001C6452F9009344EA /* AppDelegate.swift */; };
 		A882D1031C6452F9009344EA /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D1021C6452F9009344EA /* MasterViewController.swift */; };
 		A882D1051C6452F9009344EA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D1041C6452F9009344EA /* DetailViewController.swift */; };
@@ -39,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A87E0AE01C6471E700C7CBE5 /* AnimalFactoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalFactoryTest.swift; sourceTree = "<group>"; };
 		A882D0FD1C6452F9009344EA /* ZooKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZooKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A882D1001C6452F9009344EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A882D1021C6452F9009344EA /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 		A882D1161C6452F9009344EA /* ZooKeeperTests */ = {
 			isa = PBXGroup;
 			children = (
+				A87E0AE01C6471E700C7CBE5 /* AnimalFactoryTest.swift */,
 				A882D1171C6452F9009344EA /* ZooKeeperTests.swift */,
 				A882D1191C6452F9009344EA /* Info.plist */,
 			);
@@ -263,6 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A87E0AE21C64745100C7CBE5 /* zoo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A87E0AE11C6471E700C7CBE5 /* AnimalFactoryTest.swift in Sources */,
 				A882D1181C6452F9009344EA /* ZooKeeperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,6 +526,7 @@
 				A882D1291C6452F9009344EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A882D12A1C6452F9009344EA /* Build configuration list for PBXNativeTarget "ZooKeeperTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +535,7 @@
 				A882D12C1C6452F9009344EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A882D12D1C6452F9009344EA /* Build configuration list for PBXNativeTarget "ZooKeeperUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +544,7 @@
 				A882D12F1C6452F9009344EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,9 +1,21 @@
 {
     "animals" : [
-                 {"type": "Duck", "color":"yellow"},
-                 {"type": "Duck", "color":"brown"},
-                 {"type": "Fish", "color":"blue"},
-                 {"type": "Fish", "color":"brown"},
-                 {"type": "Duck", "color":"yellow"}
+                 {"type": "Duck", "color":"yellow", "isMale" : true},
+                 {"type": "Duck", "color":"brown", "isMale" : false},
+                 {"type": "Fish", "color":"blue", "isMale" : true},
+                 {"type": "Fish", "color":"brown", "isMale" : false},
+                 {"type": "Bear", "color":"yellow", "isMale" : true},
+                 {"type": "Duck", "color":"brown", "isMale" : false},
+                 {"type": "Fish", "color":"blue", "isMale" : true},
+                 {"type": "Fish", "color":"brown", "isMale" : false},
+                 {"type": "Bear", "color":"yellow", "isMale" : true},
+                 {"type": "Duck", "color":"brown", "isMale" : false},
+                 {"type": "Fish", "color":"blue", "isMale" : true},
+                 {"type": "Fish", "color":"brown", "isMale" : false},
+                 {"type": "Bear", "color":"yellow", "isMale" : true},
+                 {"type": "Duck", "color":"brown", "isMale" : false},
+                 {"type": "Fish", "color":"blue", "isMale" : true},
+                 {"type": "Fish", "color":"brown", "isMale" : false},
+                 {"type": "Bear", "color":"yellow", "isMale" : true}
     ]
 }

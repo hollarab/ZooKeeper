@@ -19,25 +19,29 @@ protocol Spawnable {
 public class Animal {
     var name:String
     var color:String
+    var legCount:Int?
+    var isMale:Bool
     
-    init(name:String, color:String) {
+    init(name:String, color:String, isMale:Bool) {
         self.name = name
         self.color = color
+        self.isMale = isMale
     }
     
     deinit {
         print("Oh no!")
     }
     
-    public func report() {
-        print("I'm a \(color) \(name) Aminal")
+    public func report() -> String {
+        return "I'm a \(isMale ? "boy" : "girl") \(color) \(name) Aminal"
     }
 }
 
 public class Duck : Animal, Quackable {
     
-    public init(color:String) {
-        super.init(name: "Duck", color:color)
+    public init(color:String, isMale:Bool) {
+        super.init(name: "Duck", color:color, isMale:isMale)
+        legCount = 2
     }
     
     public func quack() {
@@ -47,8 +51,9 @@ public class Duck : Animal, Quackable {
 
 public class Fish : Animal, Spawnable {
     
-    public init(color:String) {
-        super.init(name: "Fish", color:color)
+    public init(color:String, isMale:Bool) {
+        super.init(name: "Fish", color:color, isMale:isMale)
+        legCount = 0
     }
     
     public func spawn() {

@@ -34,12 +34,13 @@ public class AnimalFactory {
         
         let color:String = json["color"].stringValue
         let type:String = json["type"].stringValue
+        let name:String = json["name"].stringValue
         let isMale:Bool = json["isMale"].boolValue
         
         if type == "Duck" {
-            return Duck(color:color, isMale: isMale)
+            return Duck(name:name, color:color, isMale: isMale)
         } else if type == "Fish" {
-            return Fish(color:color, isMale: isMale)
+            return Fish(name:name, color:color, isMale: isMale)
         }
         
         return nil

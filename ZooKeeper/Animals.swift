@@ -17,13 +17,14 @@ protocol Spawnable {
 }
 
 public class Animal {
+    var type:String
     var name:String
     var color:String
-    var legCount:Int?
     var isMale:Bool
     
-    init(name:String, color:String, isMale:Bool) {
+    init(type:String, name:String, color:String, isMale:Bool) {
         self.name = name
+        self.type = type
         self.color = color
         self.isMale = isMale
     }
@@ -33,15 +34,14 @@ public class Animal {
     }
     
     public func report() -> String {
-        return "I'm a \(isMale ? "boy" : "girl") \(color) \(name) Aminal"
+        return "I'm \(name) a \(isMale ? "boy" : "girl") \(color) \(type) Aminal"
     }
 }
 
 public class Duck : Animal, Quackable {
     
-    public init(color:String, isMale:Bool) {
-        super.init(name: "Duck", color:color, isMale:isMale)
-        legCount = 2
+    public init(name:String, color:String, isMale:Bool) {
+        super.init(type:"Duck", name:name, color:color, isMale:isMale)
     }
     
     public func quack() {
@@ -51,9 +51,8 @@ public class Duck : Animal, Quackable {
 
 public class Fish : Animal, Spawnable {
     
-    public init(color:String, isMale:Bool) {
-        super.init(name: "Fish", color:color, isMale:isMale)
-        legCount = 0
+    public init(name:String, color:String, isMale:Bool) {
+        super.init(type:"Fish", name:name, color:color, isMale:isMale)
     }
     
     public func spawn() {

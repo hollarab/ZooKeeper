@@ -27,10 +27,9 @@ class AnimalTableViewCell: UITableViewCell {
     }
     
     func configureViewForAnimal(animal:Animal) {
-        self.topLabel.text = animal.name
-        self.bottomLabel.text = animal.report()
+        topLabel.text = animal.name
+        bottomLabel.text = animal.report()
+        iconImageView.image = UIImage(named: animal.imageName())
     }
-    
-    
 
 }

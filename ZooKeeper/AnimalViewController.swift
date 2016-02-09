@@ -18,7 +18,6 @@ class AnimalViewController: DetailViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -27,12 +26,16 @@ class AnimalViewController: DetailViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    func configureView() {
-        if let animal = self.detailItem as? Animal {
+    override func configureView() {
+        if let animal = self.detailItem as? Animal where nameTextField != nil {
             nameTextField?.text = animal.name
             colorTextField?.text = animal.color
-            genderSegmentedControl.selectedSegmentIndex = animal.isMale ? 0 : 1
+            if let weight = animal.currentWeight {
+                weightTextField?.text = NSString(format: "%0.2", weight) as String
+            } else {
+                weightTextField?.text = "unknown"
+            }
+            genderSegmentedControl?.selectedSegmentIndex = animal.isMale ? 0 : 1
         }
     }
 

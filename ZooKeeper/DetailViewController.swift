@@ -9,5 +9,18 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    var detailItem:AnyObject?
+    var detailItem:AnyObject? {
+        didSet {
+            configureView()
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        configureView()
+    }
+    
+    func configureView() {}
 }

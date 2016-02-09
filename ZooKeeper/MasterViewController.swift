@@ -27,7 +27,6 @@ class MasterViewController: UITableViewController {
         
         data = AnimalFactory.zooFromJSONFileNamed("zoo")
         tableView.rowHeight = 85.0
-        self.navigationController?.title = "Zoo Overview"
     }
 
     override func viewWillAppear(animated: Bool) {

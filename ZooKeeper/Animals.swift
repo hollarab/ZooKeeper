@@ -21,6 +21,8 @@ public class Animal {
     var name:String
     var color:String
     var isMale:Bool
+    var currentWeight:Float?
+    var birthday:NSDate?
     
     init(type:String, name:String, color:String, isMale:Bool) {
         self.name = name
@@ -35,6 +37,10 @@ public class Animal {
     
     public func report() -> String {
         return "I'm \(name) a \(isMale ? "boy" : "girl") \(color) \(type) Aminal"
+    }
+    
+    public func imageName() -> String {
+        return type.lowercaseString
     }
 }
 

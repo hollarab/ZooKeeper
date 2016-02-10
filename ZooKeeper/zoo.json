@@ -1,6 +1,6 @@
 {
     "animals" : [
-                 {"type": "Duck", "name":"Donalald", "color":"yellow", "isMale" : true},
+                 {"type": "Duck", "name":"Donald", "color":"yellow", "isMale" : true},
                  {"type": "Duck", "name":"Darkwing", "color":"brown", "isMale" : false},
                  {"type": "Fish", "name":"Jabber Jaw", "color":"blue", "isMale" : true},
                  {"type": "Fish", "name":"Charlie", "color":"brown", "isMale" : false},

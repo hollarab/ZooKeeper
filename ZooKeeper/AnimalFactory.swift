@@ -41,6 +41,12 @@ public class AnimalFactory {
             return Duck(name:name, color:color, isMale: isMale)
         } else if type == "Fish" {
             return Fish(name:name, color:color, isMale: isMale)
+        } else if type == "Lion" {
+            return Lion(name:name, color:color, isMale: isMale)
+        } else if type == "Seal" {
+            return Seal(name:name, color:color, isMale: isMale)
+        } else if type == "Bear" {
+            return Bear(name:name, color:color, isMale: isMale)
         }
         
         return nil

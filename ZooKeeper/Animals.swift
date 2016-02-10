@@ -65,3 +65,27 @@ public class Fish : Animal, Spawnable {
         print("long trip ahead...")
     }
 }
+
+
+public class Lion : Animal {
+    
+    public init(name:String, color:String, isMale:Bool) {
+        super.init(type:"Lion", name:name, color:color, isMale:isMale)
+    }
+}
+
+
+public class Seal : Animal {
+    
+    public init(name:String, color:String, isMale:Bool) {
+        super.init(type:"Seal", name:name, color:color, isMale:isMale)
+    }
+}
+
+
+public class Bear : Animal {
+    
+    public init(name:String, color:String, isMale:Bool) {
+        super.init(type:"Bear", name:name, color:color, isMale:isMale)
+    }
+}

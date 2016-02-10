@@ -156,6 +156,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="itemChanged:" destination="gvm-7l-Pb4" eventType="editingDidEnd" id="wBF-lU-Ca8"/>
+                                    <outlet property="delegate" destination="gvm-7l-Pb4" id="mhH-AI-MqH"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Animal Color" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0MU-wv-NrM">
                                 <rect key="frame" x="20" y="110" width="198" height="30"/>
@@ -165,13 +169,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="itemChanged:" destination="gvm-7l-Pb4" eventType="editingDidEnd" id="5YN-Wh-bNB"/>
+                                    <outlet property="delegate" destination="gvm-7l-Pb4" id="3zi-LW-2X3"/>
+                                </connections>
                             </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uWF-96-4Y0">
-                                <rect key="frame" x="20" y="247" width="560" height="216"/>
-                                <date key="date" timeIntervalSinceReferenceDate="476749827.28156">
-                                    <!--2016-02-09 22:30:27 +0000-->
-                                </date>
-                            </datePicker>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Animal Weight lbs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FnO-93-1Jf">
                                 <rect key="frame" x="20" y="148" width="198" height="30"/>
                                 <constraints>
@@ -180,6 +182,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="itemChanged:" destination="gvm-7l-Pb4" eventType="editingDidEnd" id="R8w-2H-ima"/>
+                                    <outlet property="delegate" destination="gvm-7l-Pb4" id="my6-8X-vDF"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bql-DQ-hjP">
                                 <rect key="frame" x="20" y="225" width="114" height="21"/>
@@ -201,7 +207,19 @@
                                     <segment title="Male"/>
                                     <segment title="Female"/>
                                 </segments>
+                                <connections>
+                                    <action selector="itemChanged:" destination="gvm-7l-Pb4" eventType="valueChanged" id="kf1-b5-D8q"/>
+                                </connections>
                             </segmentedControl>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uWF-96-4Y0">
+                                <rect key="frame" x="20" y="247" width="560" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="476749827.28156">
+                                    <!--2016-02-09 22:30:27 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="itemChanged:" destination="gvm-7l-Pb4" eventType="valueChanged" id="ZoZ-Y0-5Sh"/>
+                                </connections>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

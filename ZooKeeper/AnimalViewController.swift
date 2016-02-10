@@ -39,6 +39,14 @@ class AnimalViewController: DetailViewController {
         }
     }
 
+    
+    @IBAction func itemChanged(sender:AnyObject) {
+        print(nameTextField.text)
+        print(colorTextField.text)
+        print(weightTextField.text)
+        print(genderSegmentedControl.selectedSegmentIndex)
+        print(birthdayDatePicker.date)
+    }
 
     /*
     // MARK: - Navigation
@@ -50,4 +58,13 @@ class AnimalViewController: DetailViewController {
     }
     */
 
+}
+
+extension AnimalViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        itemChanged(textField)
+        return true
+    }
 }

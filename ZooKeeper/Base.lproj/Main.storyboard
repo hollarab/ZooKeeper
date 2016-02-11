@@ -220,6 +220,17 @@
                                     <action selector="itemChanged:" destination="gvm-7l-Pb4" eventType="valueChanged" id="ZoZ-Y0-5Sh"/>
                                 </connections>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQU-0e-pKn">
+                                <rect key="frame" x="530" y="189" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Z4w-o0-HbB"/>
+                                    <constraint firstAttribute="width" constant="50" id="lH1-Si-hW2"/>
+                                </constraints>
+                                <state key="normal" image="camera"/>
+                                <connections>
+                                    <action selector="photoButtonTouched:" destination="gvm-7l-Pb4" eventType="touchUpInside" id="fqN-yo-d10"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -227,11 +238,13 @@
                             <constraint firstItem="U9d-Xk-i4S" firstAttribute="leading" secondItem="ap8-BT-A9U" secondAttribute="leading" id="6x5-5h-cjL"/>
                             <constraint firstItem="Bql-DQ-hjP" firstAttribute="top" secondItem="U9d-Xk-i4S" secondAttribute="bottom" constant="11" id="9pJ-c7-Ut5"/>
                             <constraint firstItem="uWF-96-4Y0" firstAttribute="leading" secondItem="nBE-0w-bpW" secondAttribute="leadingMargin" id="9wJ-M3-Qa9"/>
+                            <constraint firstItem="bQU-0e-pKn" firstAttribute="trailing" secondItem="nBE-0w-bpW" secondAttribute="trailingMargin" id="Foa-6r-dys"/>
                             <constraint firstItem="FnO-93-1Jf" firstAttribute="leading" secondItem="ap8-BT-A9U" secondAttribute="leading" id="HPr-Qj-ScF"/>
                             <constraint firstItem="ap8-BT-A9U" firstAttribute="top" secondItem="dIm-YK-TxM" secondAttribute="bottom" constant="8" id="R5G-wo-wWi"/>
                             <constraint firstItem="U9d-Xk-i4S" firstAttribute="top" secondItem="FnO-93-1Jf" secondAttribute="bottom" constant="8" id="T6D-nV-EUx"/>
                             <constraint firstItem="Bql-DQ-hjP" firstAttribute="leading" secondItem="ap8-BT-A9U" secondAttribute="leading" id="Yw6-ey-FdX"/>
                             <constraint firstItem="ap8-BT-A9U" firstAttribute="leading" secondItem="nBE-0w-bpW" secondAttribute="leadingMargin" id="ZdK-Pk-hny"/>
+                            <constraint firstItem="uWF-96-4Y0" firstAttribute="top" secondItem="bQU-0e-pKn" secondAttribute="bottom" constant="8" id="az5-gq-1BF"/>
                             <constraint firstItem="uWF-96-4Y0" firstAttribute="top" secondItem="Bql-DQ-hjP" secondAttribute="bottom" constant="1" id="eBP-gf-60c"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ap8-BT-A9U" secondAttribute="trailing" id="eoZ-9u-uiQ"/>
                             <constraint firstItem="0MU-wv-NrM" firstAttribute="top" secondItem="ap8-BT-A9U" secondAttribute="bottom" constant="8" id="mTz-vO-kxY"/>
@@ -253,6 +266,9 @@
             <point key="canvasLocation" x="2266" y="-363"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera" width="50" height="50"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="U3V-at-Fab"/>
     </inferredMetricsTieBreakers>

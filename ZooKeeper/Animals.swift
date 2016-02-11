@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol Quackable {
     func quack()
@@ -23,6 +24,7 @@ public class Animal {
     var isMale:Bool
     var currentWeight:Float?
     var birthday:NSDate?
+    var photo:UIImage?
     
     init(type:String, name:String, color:String, isMale:Bool) {
         self.name = name

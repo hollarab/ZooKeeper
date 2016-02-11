@@ -29,7 +29,11 @@ class AnimalTableViewCell: UITableViewCell {
     func configureViewForAnimal(animal:Animal) {
         topLabel.text = animal.name
         bottomLabel.text = animal.report()
-        iconImageView.image = UIImage(named: animal.imageName())
+        if let photo = animal.photo {
+            iconImageView.image = photo
+        } else {
+            iconImageView.image = UIImage(named: animal.imageName())
+        }
     }
 
 }

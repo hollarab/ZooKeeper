@@ -47,6 +47,11 @@ class AnimalViewController: DetailViewController {
         print(genderSegmentedControl.selectedSegmentIndex)
         print(birthdayDatePicker.date)
     }
+    
+    
+    @IBAction func photoButtonTouched(sender: AnyObject) {
+        ABHPresentImageCapture(self)
+    }
 
     /*
     // MARK: - Navigation
@@ -68,3 +73,24 @@ extension AnimalViewController: UITextFieldDelegate {
         return true
     }
 }
+
+
+
+
+extension AnimalViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerController(picker: UIImagePickerController,
+   didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage,
+            let animal = detailItem as? Animal {
+                animal.photo = image
+        }
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+

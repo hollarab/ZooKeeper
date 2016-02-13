@@ -64,22 +64,35 @@ class MasterViewController: UITableViewController {
     // MARK: - Table View
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let data = data {
-            return data.count
+
+        switch section {
+        case 0:
+            if let data = data {
+                return data.count
+            }
+        case 1:
+            return 1
+        default:
+            return 0
         }
         return 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalTableViewCell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalTableViewCell
 
-        let animal = data![indexPath.row]
-        cell.configureViewForAnimal(animal)
+            let animal = data![indexPath.row]
+            cell.configureViewForAnimal(animal)
         return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("StaffCell", forIndexPath: indexPath) as! StaffTableViewCell
+            return cell
+        }
     }
 
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

@@ -105,7 +105,26 @@
                                     <outlet property="bottomLabel" destination="Qbw-lz-gDc" id="sMa-3u-ulh"/>
                                     <outlet property="iconImageView" destination="FF2-Qq-Aiv" id="ZRy-zB-A64"/>
                                     <outlet property="topLabel" destination="X2X-5j-HXr" id="M0z-X4-rIW"/>
-                                    <segue destination="awO-o7-NnS" kind="show" identifier="animalDetail" id="U3V-at-Fab"/>
+                                    <segue destination="awO-o7-NnS" kind="showDetail" identifier="animalDetail" id="LAp-3a-S1Z"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StaffCell" rowHeight="85" id="aRn-PJ-WcM" customClass="StaffTableViewCell" customModule="ZooKeeper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="215" width="600" height="85"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aRn-PJ-WcM" id="DKC-z4-Eup">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="84.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Staff" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLG-t0-kwD">
+                                            <rect key="frame" x="197" y="32" width="37" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="VwY-EX-e90" kind="showDetail" identifier="staffDetail" id="kmU-sM-fC6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -265,11 +284,54 @@
             </objects>
             <point key="canvasLocation" x="2266" y="-363"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="YkA-mH-xKS">
+            <objects>
+                <viewController id="dj3-qG-Li9" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XZG-uT-jZF"/>
+                        <viewControllerLayoutGuide type="bottom" id="mc8-PS-YuB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y0G-FV-DK5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U75-Kl-Ies">
+                                <rect key="frame" x="35" y="103" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="XbN-gR-0t5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EOG-Cl-leZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2272" y="461"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YGE-Gr-JLD">
+            <objects>
+                <navigationController id="VwY-EX-e90" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="j6r-5V-b73">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dj3-qG-Li9" kind="relationship" relationship="rootViewController" id="wLT-lU-a4S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TQc-Tz-xfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1500" y="457"/>
+        </scene>
     </scenes>
     <resources>
         <image name="camera" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U3V-at-Fab"/>
+        <segue reference="LAp-3a-S1Z"/>
     </inferredMetricsTieBreakers>
 </document>

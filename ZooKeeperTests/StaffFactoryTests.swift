@@ -1,15 +1,15 @@
 //
-//  AnimalFactoryTest.swift
+//  StaffFactoryTests.swift
 //  ZooKeeper
 //
-//  Created by hollarab on 2/4/16.
+//  Created by hollarab on 2/13/16.
 //  Copyright © 2016 a. brooks hollar. All rights reserved.
 //
 
 import XCTest
 @testable import ZooKeeper
 
-class AnimalFactoryTest: XCTestCase {
+class StaffFactoryTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -21,26 +21,26 @@ class AnimalFactoryTest: XCTestCase {
         super.tearDown()
     }
     
-    func test_ParseValidJSONFile_CreatesAnimalArray() {
-        if let zoo = AnimalFactory.zooFromJSONFileNamed("zoo") {
-            XCTAssertGreaterThan(zoo.count, 0, "zoo should have items")
+    func test_ParseValidJSONFile_CreatesStaffArray() {
+        if let staff = StaffFactory.employeesFromJSONFileNamed("zoo") {
+            XCTAssertGreaterThan(staff.count, 0, "zoo should have staff")
         } else {
-            XCTFail("should have zoo")
+            XCTFail("should have staff in zoo")
         }
     }
     
     func test_ParseMissingJSONFile_ReturnsNil() {
-        if let _ = AnimalFactory.zooFromJSONFileNamed("zoo!") {
+        if let _ = StaffFactory.employeesFromJSONFileNamed("zoo!") {
             XCTFail("spontanious zoo?")
         } else {
-            XCTAssert(true, "no animals should be returned")
+            XCTAssert(true, "no staff should be returned")
         }
     }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {
-            AnimalFactory.zooFromJSONFileNamed("zoo!")
+            StaffFactory.employeesFromJSONFileNamed("zoo!")
         }
     }
     

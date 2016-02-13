@@ -115,15 +115,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="84.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Staff" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLG-t0-kwD">
-                                            <rect key="frame" x="197" y="32" width="37" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYX-i1-11G">
+                                            <rect key="frame" x="8" y="28" width="584" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bYX-i1-11G" firstAttribute="trailing" secondItem="DKC-z4-Eup" secondAttribute="trailingMargin" id="DzA-Gi-YjL"/>
+                                        <constraint firstItem="bYX-i1-11G" firstAttribute="leading" secondItem="DKC-z4-Eup" secondAttribute="leadingMargin" id="a1a-W1-mOl"/>
+                                        <constraint firstItem="bYX-i1-11G" firstAttribute="centerY" secondItem="DKC-z4-Eup" secondAttribute="centerY" id="jdw-o3-Po4"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="nameLabel" destination="bYX-i1-11G" id="uJb-bh-Zpj"/>
                                     <segue destination="VwY-EX-e90" kind="showDetail" identifier="staffDetail" id="kmU-sM-fC6"/>
                                 </connections>
                             </tableViewCell>
@@ -284,10 +290,10 @@
             </objects>
             <point key="canvasLocation" x="2266" y="-363"/>
         </scene>
-        <!--View Controller-->
+        <!--Staff View Controller-->
         <scene sceneID="YkA-mH-xKS">
             <objects>
-                <viewController id="dj3-qG-Li9" sceneMemberID="viewController">
+                <viewController id="dj3-qG-Li9" customClass="StaffViewController" customModule="ZooKeeper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XZG-uT-jZF"/>
                         <viewControllerLayoutGuide type="bottom" id="mc8-PS-YuB"/>
@@ -306,6 +312,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="XbN-gR-0t5"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="U75-Kl-Ies" id="aJX-MG-W6d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOG-Cl-leZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

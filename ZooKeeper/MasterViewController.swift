@@ -8,11 +8,14 @@
 
 import UIKit
 
+let animalKey = 0
+let staffKey = 1
+
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var data:[Animal]?
-
+    var data = [Int:[AnyObject]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -25,7 +28,8 @@ class MasterViewController: UITableViewController {
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
-        data = AnimalFactory.zooFromJSONFileNamed("zoo")
+        data[animalKey] = AnimalFactory.zooFromJSONFileNamed("zoo")
+        data[staffKey] = StaffFactory.employeesFromJSONFileNamed("zoo")
         tableView.rowHeight = 85.0
     }
 
@@ -50,15 +54,20 @@ class MasterViewController: UITableViewController {
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "animalDetail" {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                let animal = data![indexPath.row]
-                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! AnimalViewController
-                controller.detailItem = animal
-                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
+        var detailItem:AnyObject?
+        
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+            if segue.identifier == "animalDetail" {
+                detailItem = data[animalKey]![indexPath.row]
+            } else if segue.identifier == "staffDetail" {
+                detailItem = data[staffKey]![indexPath.row]
             }
         }
+        
+        let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+        controller.detailItem = detailItem
+        controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+        controller.navigationItem.leftItemsSupplementBackButton = true
     }
 
     // MARK: - Table View
@@ -68,16 +77,8 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        switch section {
-        case 0:
-            if let data = data {
-                return data.count
-            }
-        case 1:
-            return 1
-        default:
-            return 0
+        if let section = data[section] {
+            return section.count
         }
         return 0
     }
@@ -86,11 +87,13 @@ class MasterViewController: UITableViewController {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalTableViewCell
 
-            let animal = data![indexPath.row]
+            let animal = data[animalKey]![indexPath.row] as! Animal
             cell.configureViewForAnimal(animal)
         return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("StaffCell", forIndexPath: indexPath) as! StaffTableViewCell
+            let staff = data[staffKey]![indexPath.row] as! Staff
+            cell.configureViewForStaff(staff)
             return cell
         }
     }
@@ -102,7 +105,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            data!.removeAtIndex(indexPath.row)
+            data[indexPath.section]!.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

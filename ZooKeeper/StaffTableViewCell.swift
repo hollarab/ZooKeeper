@@ -10,6 +10,8 @@ import UIKit
 
 class StaffTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +21,10 @@ class StaffTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configureViewForStaff(staff:Staff) {
+        nameLabel.text = staff.name
     }
 
 }

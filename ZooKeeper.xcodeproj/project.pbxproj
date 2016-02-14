@@ -11,6 +11,7 @@
 		45A8F07D1C6A9E0000F99D55 /* AnimalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A8F07C1C6A9E0000F99D55 /* AnimalViewController.swift */; };
 		45A8F07F1C6AA9A000F99D55 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A8F07E1C6AA9A000F99D55 /* DetailViewController.swift */; };
 		45A8F0861C6D376F00F99D55 /* ABHHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A8F0851C6D376F00F99D55 /* ABHHelper.swift */; };
+		45AD47E21C7120AE00862B5A /* NoSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD47E11C7120AE00862B5A /* NoSelectionViewController.swift */; };
 		A85310341C6F8D72009FF076 /* StaffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85310331C6F8D72009FF076 /* StaffTableViewCell.swift */; };
 		A85310361C6F8E74009FF076 /* Staff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85310351C6F8E74009FF076 /* Staff.swift */; };
 		A85310391C6F8E99009FF076 /* StaffFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85310381C6F8E99009FF076 /* StaffFactory.swift */; };
@@ -53,6 +54,7 @@
 		45A8F07C1C6A9E0000F99D55 /* AnimalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalViewController.swift; sourceTree = "<group>"; };
 		45A8F07E1C6AA9A000F99D55 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		45A8F0851C6D376F00F99D55 /* ABHHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABHHelper.swift; sourceTree = "<group>"; };
+		45AD47E11C7120AE00862B5A /* NoSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSelectionViewController.swift; sourceTree = "<group>"; };
 		A85310331C6F8D72009FF076 /* StaffTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffTableViewCell.swift; sourceTree = "<group>"; };
 		A85310351C6F8E74009FF076 /* Staff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Staff.swift; sourceTree = "<group>"; };
 		A85310381C6F8E99009FF076 /* StaffFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffFactory.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				45A8F07E1C6AA9A000F99D55 /* DetailViewController.swift */,
 				45A8F07C1C6A9E0000F99D55 /* AnimalViewController.swift */,
 				A85310401C6F96B2009FF076 /* StaffViewController.swift */,
+				45AD47E11C7120AE00862B5A /* NoSelectionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				A85310391C6F8E99009FF076 /* StaffFactory.swift in Sources */,
 				A882D1361C645672009344EA /* AnimalFactory.swift in Sources */,
 				A85310411C6F96B2009FF076 /* StaffViewController.swift in Sources */,
+				45AD47E21C7120AE00862B5A /* NoSelectionViewController.swift in Sources */,
 				A85310361C6F8E74009FF076 /* Staff.swift in Sources */,
 				A882D1341C64565F009344EA /* Animals.swift in Sources */,
 				A882D1401C645B82009344EA /* SwiftyJSON.swift in Sources */,

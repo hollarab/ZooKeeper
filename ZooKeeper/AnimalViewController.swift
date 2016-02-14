@@ -10,15 +10,17 @@ import UIKit
 
 class AnimalViewController: DetailViewController {
 
-    @IBOutlet var nameTextField: UITextField!
-    @IBOutlet var weightTextField: UITextField!
-    @IBOutlet var colorTextField: UITextField!
-    @IBOutlet var genderSegmentedControl: UISegmentedControl!
-    @IBOutlet var birthdayDatePicker: UIDatePicker!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var weightTextField: UITextField!
+    @IBOutlet weak var colorTextField: UITextField!
+    @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var birthdayDatePicker: UIDatePicker!
+    @IBOutlet var photoImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,6 +38,7 @@ class AnimalViewController: DetailViewController {
                 weightTextField?.text = "unknown"
             }
             genderSegmentedControl?.selectedSegmentIndex = animal.isMale ? 0 : 1
+            photoImageView.image = animal.photo ?? UIImage(named: "camera")
         }
     }
 
@@ -85,6 +88,7 @@ extension AnimalViewController: UINavigationControllerDelegate, UIImagePickerCon
         picker.dismissViewControllerAnimated(true, completion: nil)
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage,
             let animal = detailItem as? Animal {
+                photoImageView.image = image
                 animal.photo = image
         }
     }

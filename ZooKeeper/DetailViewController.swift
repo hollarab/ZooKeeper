@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    var detailItem:AnyObject? {
+    weak var detailItem:AnyObject? {
         didSet {
             configureView()
         }

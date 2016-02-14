@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol StaffDelegate: class {
+    func test()
+}
+
 class StaffViewController: DetailViewController {
 
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel!
+    var delegate:StaffDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()

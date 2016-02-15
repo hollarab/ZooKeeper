@@ -44,28 +44,19 @@ class AnimalViewController: DetailViewController {
 
     
     @IBAction func itemChanged(sender:AnyObject) {
-        print(nameTextField.text)
-        print(colorTextField.text)
-        print(weightTextField.text)
-        print(genderSegmentedControl.selectedSegmentIndex)
-        print(birthdayDatePicker.date)
+        guard let animal = detailItem as? Animal else {return}
+        
+        animal.name = nameTextField.text!
+        animal.color = colorTextField.text!
+        animal.currentWeight = Float(weightTextField.text!)
+        animal.isMale = genderSegmentedControl.selectedSegmentIndex == 0 ? true : false
+        animal.birthday = birthdayDatePicker.date
     }
     
     
     @IBAction func photoButtonTouched(sender: AnyObject) {
         ABHPresentImageCapture(self)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension AnimalViewController: UITextFieldDelegate {

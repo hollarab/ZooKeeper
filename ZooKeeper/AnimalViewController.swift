@@ -29,17 +29,17 @@ class AnimalViewController: DetailViewController {
     }
     
     override func configureView() {
-        if let animal = self.detailItem as? Animal where nameTextField != nil {
-            nameTextField?.text = animal.name
-            colorTextField?.text = animal.color
-            if let weight = animal.currentWeight {
-                weightTextField?.text = NSString(format: "%0.2", weight) as String
-            } else {
-                weightTextField?.text = "unknown"
-            }
-            genderSegmentedControl?.selectedSegmentIndex = animal.isMale ? 0 : 1
-            photoImageView.image = animal.photo ?? UIImage(named: "camera")
+        guard let animal = self.detailItem as? Animal where nameTextField != nil else {return}
+        
+        nameTextField?.text = animal.name
+        colorTextField?.text = animal.color
+        if let weight = animal.currentWeight {
+            weightTextField?.text = NSString(format: "%0.2", weight) as String
+        } else {
+            weightTextField?.text = "unknown"
         }
+        genderSegmentedControl?.selectedSegmentIndex = animal.isMale ? 0 : 1
+        photoImageView.image = animal.photo ?? UIImage(named: "camera")
     }
 
     
@@ -55,7 +55,15 @@ class AnimalViewController: DetailViewController {
     
     
     @IBAction func photoButtonTouched(sender: AnyObject) {
-        ABHPresentImageCapture(self)
+        guard let animal = detailItem as? Animal else { return }
+        
+        if animal.photo == nil {
+            ABHPresentImageCapture(self)
+        } else {
+            ABHAlertFor(self, title: "Replace photo", message: "Are you sure you want to replace this image?", okCallback: { () -> Void in
+                ABHPresentImageCapture(self)
+                }, cancelCallback: nil)
+        }
     }
 }
 

@@ -20,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-38" y="-802"/>
+            <point key="canvasLocation" x="-26" y="-330"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -50,7 +50,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eK3-wF-y2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-806" y="511"/>
+            <point key="canvasLocation" x="-856" y="511"/>
         </scene>
         <!--No Selection View Controller-->
         <scene sceneID="1tJ-rX-TKA">
@@ -81,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6u7-Dg-HG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="106" y="536"/>
+            <point key="canvasLocation" x="82" y="511"/>
         </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
@@ -191,7 +191,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="729" y="-802"/>
+            <point key="canvasLocation" x="791" y="-330"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zVk-fB-cfp">
@@ -339,7 +339,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2266" y="-363"/>
+            <point key="canvasLocation" x="2318" y="-807"/>
         </scene>
         <!--Staff View Controller-->
         <scene sceneID="YkA-mH-xKS">

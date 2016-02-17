@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnimalCollectionHeader: UICollectionReusableView {
+class GalleryHeader: UICollectionReusableView {
     
     @IBOutlet weak var nameLabel: UILabel!
     

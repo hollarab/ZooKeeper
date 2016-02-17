@@ -27,12 +27,9 @@ class TopMenuViewController: UIViewController {
         performSegueWithIdentifier("ZooList", sender: self)
     }
 
-    @IBAction func animalPhotoList(sender: AnyObject) {
-//        let storyboard = UIStoryboard(name: "AnimalImagesViewController", bundle: nil)
-//        let controller = storyboard.instantiateViewControllerWithIdentifier("AnimalImagesViewController") as! AnimalImagesViewController
-        let viewController = AnimalImagesViewController.instance()
+    @IBAction func imageGalleryTapped(sender: AnyObject) {
+        let viewController = ImageGalleryViewController.instance()
         presentViewController(viewController, animated: true, completion: nil)
-
     }
     
     /*

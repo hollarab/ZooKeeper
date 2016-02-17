@@ -6,11 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Animal Images View Controller-->
+        <!--Image Gallery View Controller-->
         <scene sceneID="YnK-0n-ebv">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VSt-Nb-8bA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="AnimalImagesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sYq-2R-19H" customClass="AnimalImagesViewController" customModule="ZooKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageGalleryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sYq-2R-19H" customClass="ImageGalleryViewController" customModule="ZooKeeper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4RB-vm-lit"/>
                         <viewControllerLayoutGuide type="bottom" id="Ei8-3a-yzZ"/>
@@ -19,6 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo6-qZ-Gwt">
+                                <rect key="frame" x="273" y="562" width="54" height="30"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="dismissTouched:" destination="sYq-2R-19H" eventType="touchUpInside" id="CCA-zQ-fhB"/>
+                                </connections>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kZ0-Jd-Fhz">
                                 <rect key="frame" x="20" y="0.0" width="560" height="554"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -29,7 +35,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnimalCell" id="mJc-5T-j5F">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnimalCell" id="mJc-5T-j5F" customClass="AnimalCollectionViewCell" customModule="ZooKeeper" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="105" height="113"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -42,8 +48,8 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="ciH-hD-g7k">
                                                             <rect key="frame" x="19" y="0.0" width="50" height="76.5"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFD-h7-71T">
-                                                            <rect key="frame" x="23" y="76" width="42" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFD-h7-71T">
+                                                            <rect key="frame" x="23.5" y="76.5" width="42" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
@@ -59,9 +65,13 @@
                                             <constraint firstAttribute="bottomMargin" secondItem="Rch-bd-MBK" secondAttribute="bottom" id="cVw-Ts-Fe5"/>
                                             <constraint firstItem="Rch-bd-MBK" firstAttribute="top" secondItem="mJc-5T-j5F" secondAttribute="topMargin" id="xXA-77-Z0k"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="animalImageView" destination="ciH-hD-g7k" id="Jdy-7d-LFK"/>
+                                            <outlet property="nameLabel" destination="AFD-h7-71T" id="xpw-OV-YOA"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionHeader" id="NAM-t1-ZHd" customClass="AnimalCollectionHeader" customModule="ZooKeeper" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionHeader" id="NAM-t1-ZHd" customClass="GalleryHeader" customModule="ZooKeeper" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="560" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -85,13 +95,6 @@
                                     <outlet property="delegate" destination="sYq-2R-19H" id="Zfw-Tb-IzR"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo6-qZ-Gwt">
-                                <rect key="frame" x="273" y="562" width="54" height="30"/>
-                                <state key="normal" title="Dismiss"/>
-                                <connections>
-                                    <action selector="dismissTouched:" destination="sYq-2R-19H" eventType="touchUpInside" id="CCA-zQ-fhB"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -107,6 +110,7 @@
                         <outlet property="imageCollectionView" destination="kZ0-Jd-Fhz" id="mhI-Lr-hFT"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VSt-Nb-8bA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="355" y="393"/>
         </scene>

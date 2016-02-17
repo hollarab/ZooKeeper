@@ -103,10 +103,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKt-4I-0Fd">
-                                <rect key="frame" x="240" y="121" width="120" height="30"/>
-                                <state key="normal" title="Animal Photo List"/>
+                                <rect key="frame" x="253" y="121" width="94" height="30"/>
+                                <state key="normal" title="Image Gallery"/>
                                 <connections>
-                                    <action selector="animalPhotoList:" destination="MBM-3x-wzJ" eventType="touchUpInside" id="4dU-k5-9Ln"/>
+                                    <action selector="imageGalleryTapped:" destination="MBM-3x-wzJ" eventType="touchUpInside" id="1rv-Mq-1Of"/>
                                 </connections>
                             </button>
                         </subviews>

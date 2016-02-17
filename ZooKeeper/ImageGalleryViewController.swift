@@ -8,24 +8,19 @@
 
 import UIKit
 
-class AnimalImagesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
     private static let storyboard = UIStoryboard(name: "Modals", bundle: nil)
 
-    static func instance() -> AnimalImagesViewController {
-        return storyboard.instantiateViewControllerWithIdentifier("AnimalImagesViewController") as! AnimalImagesViewController
+    static func instance() -> ImageGalleryViewController {
+        return storyboard.instantiateViewControllerWithIdentifier("ImageGalleryViewController") as! ImageGalleryViewController
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         imageCollectionView.registerNib(UINib(nibName: "StaffCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "StaffCell")
-        // Do any additional setup after loading the view.
-        
-//        var collectionViewLayout = imageCollectionView.collectionViewLayout
-//        collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,10 +51,10 @@ class AnimalImagesViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     
-    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AnimalCell", forIndexPath: indexPath)
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalCollectionViewCell
+            cell.nameLabel.text = "name"
             return cell
         } else {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StaffCell", forIndexPath: indexPath)
@@ -68,13 +63,9 @@ class AnimalImagesViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        
-//        if kind == UICollectionElementKindSectionHeader {
-            let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "CollectionHeader", forIndexPath: indexPath) as! AnimalCollectionHeader
-            header.nameLabel.text = "test"
-            return header
-            
-//        }
+        let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "CollectionHeader", forIndexPath: indexPath) as! GalleryHeader
+        header.nameLabel.text = indexPath.section == 0 ? "Animals" : "Staff"
+        return header
     }
     
 }

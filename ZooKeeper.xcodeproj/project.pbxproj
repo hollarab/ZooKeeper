@@ -30,6 +30,12 @@
 		A882D1361C645672009344EA /* AnimalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D1351C645672009344EA /* AnimalFactory.swift */; };
 		A882D13A1C6458DB009344EA /* zoo.json in Resources */ = {isa = PBXBuildFile; fileRef = A882D1391C6458DB009344EA /* zoo.json */; };
 		A882D1401C645B82009344EA /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A882D13F1C645B82009344EA /* SwiftyJSON.swift */; };
+		A89E0AF81C73F1CF008F952D /* TopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89E0AF71C73F1CF008F952D /* TopMenuViewController.swift */; };
+		A89E0AFB1C73F28E008F952D /* AnimalImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89E0AF91C73F28E008F952D /* AnimalImagesViewController.swift */; };
+		A89E0AFE1C741BF9008F952D /* Modals.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A89E0AFD1C741BF9008F952D /* Modals.storyboard */; };
+		A89E0B011C74285B008F952D /* StaffCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89E0AFF1C74285B008F952D /* StaffCollectionViewCell.swift */; };
+		A89E0B021C74285B008F952D /* StaffCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A89E0B001C74285B008F952D /* StaffCollectionViewCell.xib */; };
+		A89E0B041C742ECD008F952D /* AnimalCollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89E0B031C742ECD008F952D /* AnimalCollectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +84,12 @@
 		A882D1351C645672009344EA /* AnimalFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalFactory.swift; sourceTree = "<group>"; };
 		A882D1391C6458DB009344EA /* zoo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zoo.json; sourceTree = "<group>"; };
 		A882D13F1C645B82009344EA /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		A89E0AF71C73F1CF008F952D /* TopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMenuViewController.swift; sourceTree = "<group>"; };
+		A89E0AF91C73F28E008F952D /* AnimalImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalImagesViewController.swift; sourceTree = "<group>"; };
+		A89E0AFD1C741BF9008F952D /* Modals.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Modals.storyboard; sourceTree = "<group>"; };
+		A89E0AFF1C74285B008F952D /* StaffCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffCollectionViewCell.swift; sourceTree = "<group>"; };
+		A89E0B001C74285B008F952D /* StaffCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffCollectionViewCell.xib; sourceTree = "<group>"; };
+		A89E0B031C742ECD008F952D /* AnimalCollectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCollectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +125,9 @@
 				45A8F07C1C6A9E0000F99D55 /* AnimalViewController.swift */,
 				A85310401C6F96B2009FF076 /* StaffViewController.swift */,
 				45AD47E11C7120AE00862B5A /* NoSelectionViewController.swift */,
+				A89E0AF71C73F1CF008F952D /* TopMenuViewController.swift */,
+				A89E0AFD1C741BF9008F952D /* Modals.storyboard */,
+				A89E0AF91C73F28E008F952D /* AnimalImagesViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -153,6 +168,9 @@
 				45A8F0851C6D376F00F99D55 /* ABHHelper.swift */,
 				A882D1001C6452F9009344EA /* AppDelegate.swift */,
 				A882D1061C6452F9009344EA /* Main.storyboard */,
+				A89E0AFF1C74285B008F952D /* StaffCollectionViewCell.swift */,
+				A89E0B001C74285B008F952D /* StaffCollectionViewCell.xib */,
+				A89E0B031C742ECD008F952D /* AnimalCollectionHeader.swift */,
 				A882D1321C6455B8009344EA /* Models */,
 				A85310371C6F8E7D009FF076 /* TableViewCells */,
 				45A8F0801C6AAA2300F99D55 /* Controllers */,
@@ -299,6 +317,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A89E0AFE1C741BF9008F952D /* Modals.storyboard in Resources */,
+				A89E0B021C74285B008F952D /* StaffCollectionViewCell.xib in Resources */,
 				A882D13A1C6458DB009344EA /* zoo.json in Resources */,
 				A882D10D1C6452F9009344EA /* LaunchScreen.storyboard in Resources */,
 				A882D10A1C6452F9009344EA /* Assets.xcassets in Resources */,
@@ -332,13 +352,17 @@
 				A85310391C6F8E99009FF076 /* StaffFactory.swift in Sources */,
 				A882D1361C645672009344EA /* AnimalFactory.swift in Sources */,
 				A85310411C6F96B2009FF076 /* StaffViewController.swift in Sources */,
+				A89E0AFB1C73F28E008F952D /* AnimalImagesViewController.swift in Sources */,
 				45AD47E21C7120AE00862B5A /* NoSelectionViewController.swift in Sources */,
+				A89E0AF81C73F1CF008F952D /* TopMenuViewController.swift in Sources */,
 				A85310361C6F8E74009FF076 /* Staff.swift in Sources */,
+				A89E0B011C74285B008F952D /* StaffCollectionViewCell.swift in Sources */,
 				A882D1341C64565F009344EA /* Animals.swift in Sources */,
 				A882D1401C645B82009344EA /* SwiftyJSON.swift in Sources */,
 				A85310341C6F8D72009FF076 /* StaffTableViewCell.swift in Sources */,
 				45A8F0861C6D376F00F99D55 /* ABHHelper.swift in Sources */,
 				A882D1031C6452F9009344EA /* MasterViewController.swift in Sources */,
+				A89E0B041C742ECD008F952D /* AnimalCollectionHeader.swift in Sources */,
 				45A8F07D1C6A9E0000F99D55 /* AnimalViewController.swift in Sources */,
 				A882D1011C6452F9009344EA /* AppDelegate.swift in Sources */,
 				45A8F07F1C6AA9A000F99D55 /* DetailViewController.swift in Sources */,

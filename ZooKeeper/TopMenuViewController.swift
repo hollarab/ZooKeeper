@@ -1,0 +1,48 @@
+//
+//  TopMenuViewController.swift
+//  ZooKeeper
+//
+//  Created by hollarab on 2/16/16.
+//  Copyright © 2016 a. brooks hollar. All rights reserved.
+//
+
+import UIKit
+
+class TopMenuViewController: UIViewController {
+
+    @IBOutlet weak var zooListButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func zooListTapped(sender: AnyObject) {
+        performSegueWithIdentifier("ZooList", sender: self)
+    }
+
+    @IBAction func animalPhotoList(sender: AnyObject) {
+//        let storyboard = UIStoryboard(name: "AnimalImagesViewController", bundle: nil)
+//        let controller = storyboard.instantiateViewControllerWithIdentifier("AnimalImagesViewController") as! AnimalImagesViewController
+        let viewController = AnimalImagesViewController.instance()
+        presentViewController(viewController, animated: true, completion: nil)
+
+    }
+    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

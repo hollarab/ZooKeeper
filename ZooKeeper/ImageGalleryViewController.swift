@@ -52,20 +52,8 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalCollectionViewCell
-            cell.nameLabel.text = "name"
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StaffCell", forIndexPath: indexPath)
-            return cell
-        }
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalCollectionViewCell
+        cell.nameLabel.text = "name"
+        return cell
     }
-    
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "CollectionHeader", forIndexPath: indexPath) as! GalleryHeader
-        header.nameLabel.text = indexPath.section == 0 ? "Animals" : "Staff"
-        return header
-    }
-    
 }

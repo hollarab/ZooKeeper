@@ -34,9 +34,6 @@
 		A89E0AF81C73F1CF008F952D /* TopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89E0AF71C73F1CF008F952D /* TopMenuViewController.swift */; };
 		A89E0AFB1C73F28E008F952D /* ImageGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89E0AF91C73F28E008F952D /* ImageGalleryViewController.swift */; };
 		A89E0AFE1C741BF9008F952D /* Modals.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A89E0AFD1C741BF9008F952D /* Modals.storyboard */; };
-		A89E0B011C74285B008F952D /* StaffCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89E0AFF1C74285B008F952D /* StaffCollectionViewCell.swift */; };
-		A89E0B021C74285B008F952D /* StaffCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A89E0B001C74285B008F952D /* StaffCollectionViewCell.xib */; };
-		A89E0B041C742ECD008F952D /* GalleryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89E0B031C742ECD008F952D /* GalleryHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,9 +86,6 @@
 		A89E0AF71C73F1CF008F952D /* TopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMenuViewController.swift; sourceTree = "<group>"; };
 		A89E0AF91C73F28E008F952D /* ImageGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGalleryViewController.swift; sourceTree = "<group>"; };
 		A89E0AFD1C741BF9008F952D /* Modals.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Modals.storyboard; sourceTree = "<group>"; };
-		A89E0AFF1C74285B008F952D /* StaffCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffCollectionViewCell.swift; sourceTree = "<group>"; };
-		A89E0B001C74285B008F952D /* StaffCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffCollectionViewCell.xib; sourceTree = "<group>"; };
-		A89E0B031C742ECD008F952D /* GalleryHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,9 +132,6 @@
 		45AD47E31C74E13000862B5A /* CollectionViews */ = {
 			isa = PBXGroup;
 			children = (
-				A89E0AFF1C74285B008F952D /* StaffCollectionViewCell.swift */,
-				A89E0B001C74285B008F952D /* StaffCollectionViewCell.xib */,
-				A89E0B031C742ECD008F952D /* GalleryHeader.swift */,
 				45AD47E41C74E88400862B5A /* AnimalCollectionViewCell.swift */,
 			);
 			name = CollectionViews;
@@ -329,7 +320,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A89E0AFE1C741BF9008F952D /* Modals.storyboard in Resources */,
-				A89E0B021C74285B008F952D /* StaffCollectionViewCell.xib in Resources */,
 				A882D13A1C6458DB009344EA /* zoo.json in Resources */,
 				A882D10D1C6452F9009344EA /* LaunchScreen.storyboard in Resources */,
 				A882D10A1C6452F9009344EA /* Assets.xcassets in Resources */,
@@ -367,13 +357,11 @@
 				45AD47E21C7120AE00862B5A /* NoSelectionViewController.swift in Sources */,
 				A89E0AF81C73F1CF008F952D /* TopMenuViewController.swift in Sources */,
 				A85310361C6F8E74009FF076 /* Staff.swift in Sources */,
-				A89E0B011C74285B008F952D /* StaffCollectionViewCell.swift in Sources */,
 				A882D1341C64565F009344EA /* Animals.swift in Sources */,
 				A882D1401C645B82009344EA /* SwiftyJSON.swift in Sources */,
 				A85310341C6F8D72009FF076 /* StaffTableViewCell.swift in Sources */,
 				45A8F0861C6D376F00F99D55 /* ABHHelper.swift in Sources */,
 				A882D1031C6452F9009344EA /* MasterViewController.swift in Sources */,
-				A89E0B041C742ECD008F952D /* GalleryHeader.swift in Sources */,
 				45A8F07D1C6A9E0000F99D55 /* AnimalViewController.swift in Sources */,
 				A882D1011C6452F9009344EA /* AppDelegate.swift in Sources */,
 				45A8F07F1C6AA9A000F99D55 /* DetailViewController.swift in Sources */,

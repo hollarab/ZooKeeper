@@ -21,7 +21,7 @@ class ZooTestCase: XCTestCase {
         super.tearDown()
     }
     
-    func test_savingImage_updatesHasImage() {
+    func test_savingImage_updatesHasImageAndIsReadable() {
         // This is an example of a functional test case.
         let image = UIImage(named: "camera")
         XCTAssertNotNil(image, "need an image")
@@ -29,6 +29,7 @@ class ZooTestCase: XCTestCase {
         let animal = Duck(name: "Pete", color: "Blue", isMale: true)
         XCTAssert(animal.saveImage(image!), "saving should return true")
         XCTAssert(animal.hasImage(), "animal should have image")
+
         let loadedImage = animal.loadImage()
         XCTAssertNotNil(loadedImage, "animal image should load off disk")   
     }

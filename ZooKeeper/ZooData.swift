@@ -9,10 +9,9 @@
 import Foundation
 
 public class ZooData {
-
-    private let dataFileName = "zoo"
-    
     public static let sharedInstance = ZooData()
+    
+    private let dataFileName = "zoo"
     
     public var zoo:Zoo
 
@@ -27,5 +26,4 @@ public class ZooData {
     public func saveZoo() -> Bool {
         return ZooFactory.saveZoo(zoo, toBundleFile: dataFileName)
     }
-    
 }

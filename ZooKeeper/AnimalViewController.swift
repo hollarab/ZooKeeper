@@ -90,7 +90,6 @@ extension AnimalViewController: UINavigationControllerDelegate, UIImagePickerCon
             let animal = detailItem as? Animal {
                 photoImageView.image = image
                 animal.saveImage(image)
-                ZooData.sharedInstance.saveZoo()
         }
     }
     

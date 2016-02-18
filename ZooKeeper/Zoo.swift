@@ -17,6 +17,7 @@ public class Zoo {
         self.animals = animals ?? [Animal]()
         self.staff = staff ?? [Staff]()
     }
+
     
     public func toDictionary() -> [String:AnyObject] {
         var animalArray = [[String:AnyObject]]()

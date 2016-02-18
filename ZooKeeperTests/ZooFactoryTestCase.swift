@@ -21,7 +21,8 @@ class ZooFactoryTestCase: XCTestCase {
         super.tearDown()
     }
     
-    func test_ParseValidJSONFile_CreatesStaffArray() {
+    func test_ParseValidJSONFile_CreatesZooObject() {
+        
         if let zoo = ZooFactory.zooFromJSONFileNamed("zoo") {
             XCTAssertGreaterThan(zoo.staff.count, 0, "zoo should have staff")
             XCTAssertGreaterThan(zoo.animals.count, 0, "zoo should have animals")

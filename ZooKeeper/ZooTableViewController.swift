@@ -8,13 +8,13 @@
 
 import UIKit
 
-let animalKey = 0
-let staffKey = 1
+let animalSection = 0
+let staffSection = 1
 
-class MasterViewController: UITableViewController {
+class ZooTableViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var data = [Int:[AnyObject]]()
+    var zoo:Zoo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +28,7 @@ class MasterViewController: UITableViewController {
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
-        data[animalKey] = AnimalFactory.zooFromJSONFileNamed("zoo")
-        data[staffKey] = StaffFactory.employeesFromJSONFileNamed("zoo")
+        zoo = ZooData.sharedInstance.zoo
         tableView.rowHeight = 85.0
     }
 
@@ -60,9 +59,9 @@ class MasterViewController: UITableViewController {
 
         if let indexPath = self.tableView.indexPathForSelectedRow {
             if segue.identifier == "animalDetail" {
-                detailItem = data[animalKey]![indexPath.row]
+                detailItem = zoo.animals[indexPath.row]
             } else if segue.identifier == "staffDetail" {
-                detailItem = data[staffKey]![indexPath.row]
+                detailItem = zoo.staff[indexPath.row]
                 (controller as! StaffViewController).delegate = self
             }
         }
@@ -79,22 +78,26 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let section = data[section] {
-            return section.count
+        switch section {
+        case animalSection:
+            return zoo.animals.count
+        case staffSection:
+            return zoo.staff.count
+        default:
+            return 0
         }
-        return 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalTableViewCell
 
-            let animal = data[animalKey]![indexPath.row] as! Animal
+            let animal = zoo.animals[indexPath.row]
             cell.configureViewForAnimal(animal)
         return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("StaffCell", forIndexPath: indexPath) as! StaffTableViewCell
-            let staff = data[staffKey]![indexPath.row] as! Staff
+            let staff = zoo.staff[indexPath.row]
             cell.configureViewForStaff(staff)
             return cell
         }
@@ -105,20 +108,11 @@ class MasterViewController: UITableViewController {
         return true
     }
 
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            data[indexPath.section]!.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
-    }
-
-
+    // remove the delete method
 }
 
 
-extension MasterViewController: StaffDelegate {
+extension ZooTableViewController: StaffDelegate {
     func test() {
 
     }

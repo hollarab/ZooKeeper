@@ -39,7 +39,7 @@ class AnimalViewController: DetailViewController {
             weightTextField?.text = "unknown"
         }
         genderSegmentedControl?.selectedSegmentIndex = animal.isMale ? 0 : 1
-        photoImageView.image = animal.photo ?? UIImage(named: "camera")
+        photoImageView.image = animal.loadImage() ?? UIImage(named: "camera")
     }
 
     
@@ -51,13 +51,14 @@ class AnimalViewController: DetailViewController {
         animal.currentWeight = Float(weightTextField.text!)
         animal.isMale = genderSegmentedControl.selectedSegmentIndex == 0 ? true : false
         animal.birthday = birthdayDatePicker.date
+        ZooData.sharedInstance.saveZoo()
     }
     
     
     @IBAction func photoButtonTouched(sender: AnyObject) {
         guard let animal = detailItem as? Animal else { return }
         
-        if animal.photo == nil {
+        if !animal.hasImage() {
             ABHPresentImageCapture(self)
         } else {
             ABHAlertFor(self, title: "Replace photo", message: "Are you sure you want to replace this image?", okCallback: { () -> Void in
@@ -88,7 +89,8 @@ extension AnimalViewController: UINavigationControllerDelegate, UIImagePickerCon
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage,
             let animal = detailItem as? Animal {
                 photoImageView.image = image
-                animal.photo = image
+                animal.saveImage(image)
+                ZooData.sharedInstance.saveZoo()
         }
     }
     

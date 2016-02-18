@@ -35,6 +35,7 @@ class ZooKeeperUITests: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let app = XCUIApplication()
+        app.buttons["Zoo List"].tap()
         app.tables.staticTexts["Donald"].tap()
         app.textFields["Animal Name"].tap()
         app.textFields["Animal Color"].tap()

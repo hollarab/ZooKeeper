@@ -18,6 +18,11 @@ public class Staff {
         self.name = name
         self.isMale = isMale
     }
+    
+    public func toDictionary() -> [String:AnyObject] {
+        return [ "type" : type, "name" : name, "isMale" : isMale]
+    }
+    
 }
 
 public class ZooKeeper : Staff {

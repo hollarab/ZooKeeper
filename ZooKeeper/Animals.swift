@@ -24,7 +24,8 @@ public class Animal {
     var isMale:Bool
     var currentWeight:Float?
     var birthday:NSDate?
-    var photo:UIImage?
+    
+    var photoFileName:String?
     
     init(type:String, name:String, color:String, isMale:Bool) {
         self.name = name
@@ -37,12 +38,39 @@ public class Animal {
         print("Oh no!")
     }
     
+    public func toDictionary() -> [String:AnyObject] {
+        return [ "type" : type, "name" : name, "isMale" : isMale, "color":color,  "photoFileName": photoFileName ?? ""]
+    }
+    
     public func report() -> String {
         return "I'm \(name) a \(isMale ? "boy" : "girl") \(color) \(type) Aminal"
     }
     
-    public func imageName() -> String {
+    public func defaultImageName() -> String {
         return type.lowercaseString
+    }
+    
+    public func hasImage() -> Bool {
+        return photoFileName != nil
+    }
+    
+    public func saveImage(image:UIImage) -> Bool {
+        if let data = UIImageJPEGRepresentation(image, 0.8) {
+            photoFileName = NSUUID().UUIDString + ".jpg"
+            let path = pathToFileInDocumentsDirectory(photoFileName!)
+            print("writng to \(path)")
+            return data.writeToFile(path, atomically: true)
+        }
+        return false
+    }
+    
+    public func loadImage() -> UIImage? {
+        print("reading from \(photoFileName ?? "no file")")
+        guard let filename = photoFileName,
+              let path = pathToExistingFileInDocumentsDirectory(filename),
+              let image = UIImage(contentsOfFile: path) else { return nil }
+
+        return image
     }
 }
 

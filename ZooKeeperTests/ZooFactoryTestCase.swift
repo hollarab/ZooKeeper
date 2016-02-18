@@ -34,7 +34,7 @@ class ZooFactoryTestCase: XCTestCase {
     
     func test_saveZoo_works() {
         if let zoo = ZooFactory.zooFromJSONFileNamed("zoo") {
-            let saved = ZooFactory.saveZoo(zoo, toBundleFile: "zoo2")
+            let saved = ZooFactory.saveZoo(zoo, toFileNamed: "zoo2")
             XCTAssert(saved, "should have saved zoo")
         } else {
             XCTFail("should have staff in zoo")
@@ -44,7 +44,7 @@ class ZooFactoryTestCase: XCTestCase {
     func test_loadSavedZoo_hasNewStuff() {
         if let zoo = ZooFactory.zooFromJSONFileNamed("zoo") {
             zoo.animals.append(Duck(name: "name", color: "color", isMale: true))
-            let saved = ZooFactory.saveZoo(zoo, toBundleFile: "zoo2")
+            let saved = ZooFactory.saveZoo(zoo, toFileNamed: "zoo2")
             XCTAssert(saved, "should have saved zoo")
             
             if let zoo2 = ZooFactory.zooFromJSONFileNamed("zoo2") {

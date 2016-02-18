@@ -39,7 +39,8 @@ public class Animal {
     }
     
     public func toDictionary() -> [String:AnyObject] {
-        return [ "type" : type, "name" : name, "isMale" : isMale, "color":color,  "photoFileName": photoFileName ?? ""]
+        return [ "type" : type, "name" : name, "isMale" : isMale,
+                 "color":color,  "photoFileName": photoFileName ?? ""]
     }
     
     public func report() -> String {

@@ -96,7 +96,7 @@ public class ZooFactory {
         return nil
     }
 
-    public static func saveZoo(zoo:Zoo, toBundleFile name:String) -> Bool {
+    public static func saveZoo(zoo:Zoo, toFileNamed name:String) -> Bool {
         let path = pathToFileInDocumentsDirectory(name + ".json")
         
         let json = JSON(zoo.toDictionary())

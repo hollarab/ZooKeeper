@@ -24,6 +24,6 @@ public class ZooData {
     }
     
     public func saveZoo() -> Bool {
-        return ZooFactory.saveZoo(zoo, toBundleFile: dataFileName)
+        return ZooFactory.saveZoo(zoo, toFileNamed:dataFileName)
     }
 }

@@ -78,18 +78,17 @@ extension AnimalViewController: UITextFieldDelegate {
 }
 
 
-
-
 extension AnimalViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     func imagePickerController(picker: UIImagePickerController,
-   didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+         didFinishPickingMediaWithInfo info: [String : AnyObject]) {
     
         picker.dismissViewControllerAnimated(true, completion: nil)
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage,
             let animal = detailItem as? Animal {
                 photoImageView.image = image
                 animal.saveImage(image)
+                ZooData.sharedInstance.saveZoo()
         }
     }
     

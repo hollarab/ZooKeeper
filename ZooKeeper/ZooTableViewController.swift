@@ -29,12 +29,13 @@ class ZooTableViewController: UITableViewController {
         
         zoo = ZooData.sharedInstance.zoo
         tableView.rowHeight = 85.0
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dataUpdated:", name: ZooDataNotifications.Updated.rawValue, object: nil)
     }
 
     override func viewWillAppear(animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
         super.viewWillAppear(animated)
-        tableView.reloadData()
     }
 
     
@@ -49,6 +50,11 @@ class ZooTableViewController: UITableViewController {
 //        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
 
+    // MARK: - Notifications
+    func dataUpdated(notication:NSNotification) {
+        tableView.reloadData()
+    }
+    
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

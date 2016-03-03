@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		452178641C88F7EF00CBE647 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452178631C88F7EF00CBE647 /* Firebase.framework */; };
+		452178661C88F81300CBE647 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 452178651C88F81300CBE647 /* libicucore.tbd */; };
+		452178681C88F83D00CBE647 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 452178671C88F83D00CBE647 /* libc++.tbd */; };
+		4521786A1C88F85B00CBE647 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452178691C88F85B00CBE647 /* CFNetwork.framework */; };
+		4521786C1C88F86100CBE647 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4521786B1C88F86100CBE647 /* Security.framework */; };
+		4521786E1C88F86600CBE647 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4521786D1C88F86600CBE647 /* SystemConfiguration.framework */; };
 		45A8F07B1C6A9B9D00F99D55 /* AnimalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A8F07A1C6A9B9D00F99D55 /* AnimalTableViewCell.swift */; };
 		45A8F07D1C6A9E0000F99D55 /* AnimalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A8F07C1C6A9E0000F99D55 /* AnimalViewController.swift */; };
 		45A8F07F1C6AA9A000F99D55 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A8F07E1C6AA9A000F99D55 /* DetailViewController.swift */; };
@@ -59,6 +65,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		452178631C88F7EF00CBE647 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = SOURCE_ROOT; };
+		452178651C88F81300CBE647 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		452178671C88F83D00CBE647 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		452178691C88F85B00CBE647 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		4521786B1C88F86100CBE647 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4521786D1C88F86600CBE647 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		45A8F07A1C6A9B9D00F99D55 /* AnimalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalTableViewCell.swift; sourceTree = "<group>"; };
 		45A8F07C1C6A9E0000F99D55 /* AnimalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalViewController.swift; sourceTree = "<group>"; };
 		45A8F07E1C6AA9A000F99D55 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +115,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4521786E1C88F86600CBE647 /* SystemConfiguration.framework in Frameworks */,
+				4521786C1C88F86100CBE647 /* Security.framework in Frameworks */,
+				4521786A1C88F85B00CBE647 /* CFNetwork.framework in Frameworks */,
+				452178681C88F83D00CBE647 /* libc++.tbd in Frameworks */,
+				452178661C88F81300CBE647 /* libicucore.tbd in Frameworks */,
+				452178641C88F7EF00CBE647 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +180,11 @@
 		A882D0F41C6452F9009344EA = {
 			isa = PBXGroup;
 			children = (
+				4521786D1C88F86600CBE647 /* SystemConfiguration.framework */,
+				4521786B1C88F86100CBE647 /* Security.framework */,
+				452178691C88F85B00CBE647 /* CFNetwork.framework */,
+				452178671C88F83D00CBE647 /* libc++.tbd */,
+				452178651C88F81300CBE647 /* libicucore.tbd */,
 				A882D0FF1C6452F9009344EA /* ZooKeeper */,
 				A882D1161C6452F9009344EA /* ZooKeeperTests */,
 				A882D1211C6452F9009344EA /* ZooKeeperUITests */,
@@ -192,6 +215,7 @@
 				A882D1091C6452F9009344EA /* Assets.xcassets */,
 				A882D10B1C6452F9009344EA /* LaunchScreen.storyboard */,
 				A882D10E1C6452F9009344EA /* Info.plist */,
+				452178631C88F7EF00CBE647 /* Firebase.framework */,
 			);
 			path = ZooKeeper;
 			sourceTree = "<group>";
@@ -532,6 +556,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ZooKeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -547,6 +572,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ZooKeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

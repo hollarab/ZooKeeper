@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import Firebase
 
 public class ZooFactory {
+    
+    private var ref:Firebase?
     
     public static func zooFromJSONFileNamed(name:String) -> Zoo? {
         // Check to see if we have one in the docs dir
@@ -112,4 +115,20 @@ public class ZooFactory {
         return true
     }
     
+}
+
+//MARK: - Firebase helpers
+extension ZooFactory {
+    
+    convenience init(snapshot: FDataSnapshot) {
+        ref = snapshot.ref
+    }
+    
+    func toAnyObject() -> AnyObject {
+        return [
+            "name": name,
+            "addedByUser": addedByUser,
+            "completed": completed
+        ]
+    }
 }

@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import Firebase
+
+let kFirebaseAppId = "zoo-swift-t1-2016"
 
 enum ZooDataNotifications:String {
     case Updated = "com.lss.zoodata.Updated"
@@ -17,9 +20,13 @@ public class ZooData {
     
     private let dataFileName = "zoo"
     
+    let rootRef = Firebase(url: "https://\(kFirebaseAppId).firebaseio.com/")
+    
     public var zoo:Zoo
     
     private init() {
+        Firebase.defaultConfig().persistenceEnabled = true
+        
         if let zoo = ZooFactory.zooFromJSONFileNamed(dataFileName) {
             self.zoo = zoo
         } else {
@@ -28,10 +35,17 @@ public class ZooData {
     }
     
     public func saveZoo() -> Bool {
+        
+        return true
+    }
+    
+    
+    private func saveLocal() -> Bool {
         let result = ZooFactory.saveZoo(zoo, toFileNamed:dataFileName)
         if result {
-            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: ZooDataNotifications.Updated.rawValue, object: nil))
+            NSNotificationCenter.defaultCenter().postNotificationName(ZooDataNotifications.Updated.rawValue, object: nil)
         }
         return result
     }
 }
+

@@ -17,6 +17,8 @@ protocol Spawnable {
     func spawn()
 }
 
+let dateFormatString = "dd-MMM-yy"
+
 public class Animal {
     var type:String
     var name:String
@@ -40,7 +42,24 @@ public class Animal {
     
     public func toDictionary() -> [String:AnyObject] {
         return [ "type" : type, "name" : name, "isMale" : isMale,
-                 "color":color,  "photoFileName": photoFileName ?? ""]
+            "currentWeight":currentWeight ?? -1, "birthday" : birthdayDateString() ?? "",
+                "color":color,  "photoFileName": photoFileName ?? ""]
+    }
+    
+    private func birthdayDateString() -> String? {
+        guard let day = birthday else {return nil}
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = dateFormatString
+        return formatter.stringFromDate(day)
+    }
+    
+    public static func dateFromString(string:String?) -> NSDate? {
+        guard let string = string else {return nil}
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = dateFormatString
+        return formatter.dateFromString(string)
     }
     
     public func report() -> String {

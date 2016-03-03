@@ -34,9 +34,13 @@ class AnimalViewController: DetailViewController {
         nameTextField?.text = animal.name
         colorTextField?.text = animal.color
         if let weight = animal.currentWeight {
-            weightTextField?.text = NSString(format: "%0.2", weight) as String
+            let str = weight.format("0.2")
+            weightTextField?.text = str
         } else {
             weightTextField?.text = "unknown"
+        }
+        if let bday = animal.birthday {
+            birthdayDatePicker.date = bday
         }
         genderSegmentedControl?.selectedSegmentIndex = animal.isMale ? 0 : 1
         photoImageView.image = animal.loadImage() ?? UIImage(named: "camera")
@@ -83,13 +87,13 @@ extension AnimalViewController: UINavigationControllerDelegate, UIImagePickerCon
     func imagePickerController(picker: UIImagePickerController,
          didFinishPickingMediaWithInfo info: [String : AnyObject]) {
     
-        picker.dismissViewControllerAnimated(true, completion: nil)
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage,
             let animal = detailItem as? Animal {
                 photoImageView.image = image
                 animal.saveImage(image)
                 ZooData.sharedInstance.saveZoo()
         }
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

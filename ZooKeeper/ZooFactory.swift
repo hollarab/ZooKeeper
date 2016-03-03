@@ -79,6 +79,14 @@ public class ZooFactory {
         if !photoPath.isEmpty {
             animal?.photoFileName = photoPath
         }
+
+        if let currentWeight = json["currentWeight"].float where currentWeight > 0 {
+            animal?.currentWeight = currentWeight
+        }
+
+        if let birthdayString = json["birthday"].string where !birthdayString.isEmpty {
+            animal?.birthday = Animal.dateFromString(birthdayString)
+        }
         
         return animal
     }

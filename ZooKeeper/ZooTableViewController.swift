@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 let animalSection = 0
 let staffSection = 1
@@ -15,6 +16,8 @@ class ZooTableViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var zoo:Zoo!
+    let animalsRef = ZooData.sharedInstance.rootRef.childByAppendingPath("animals")
+    let staffRef = ZooData.sharedInstance.rootRef.childByAppendingPath("staff")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +30,8 @@ class ZooTableViewController: UITableViewController {
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
-        zoo = ZooData.sharedInstance.zoo
+        zoo = Zoo(animals: nil, staff: nil)
+        
         tableView.rowHeight = 85.0
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "dataUpdated:", name: ZooDataNotifications.Updated.rawValue, object: nil)
@@ -36,6 +40,20 @@ class ZooTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
         super.viewWillAppear(animated)
+        
+        animalsRef.observeEventType(.Value, withBlock: { snapshot in
+            var animals = [Animal]()
+            for item in snapshot.children {
+                let animal = Animal(snapshot: item as! FDataSnapshot)
+                animals.append(animal)
+            }
+            print("loaded \(animals.count) animals")
+            self.zoo.animals = animals
+            self.tableView.reloadData()
+            
+            }, withCancelBlock: { error in
+            print(error.description)
+        })
     }
 
     

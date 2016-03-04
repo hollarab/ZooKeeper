@@ -141,6 +141,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4521786F1C89005600CBE647 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4521786D1C88F86600CBE647 /* SystemConfiguration.framework */,
+				4521786B1C88F86100CBE647 /* Security.framework */,
+				452178691C88F85B00CBE647 /* CFNetwork.framework */,
+				452178671C88F83D00CBE647 /* libc++.tbd */,
+				452178651C88F81300CBE647 /* libicucore.tbd */,
+				452178631C88F7EF00CBE647 /* Firebase.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		45A8F0801C6AAA2300F99D55 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,11 +193,6 @@
 		A882D0F41C6452F9009344EA = {
 			isa = PBXGroup;
 			children = (
-				4521786D1C88F86600CBE647 /* SystemConfiguration.framework */,
-				4521786B1C88F86100CBE647 /* Security.framework */,
-				452178691C88F85B00CBE647 /* CFNetwork.framework */,
-				452178671C88F83D00CBE647 /* libc++.tbd */,
-				452178651C88F81300CBE647 /* libicucore.tbd */,
 				A882D0FF1C6452F9009344EA /* ZooKeeper */,
 				A882D1161C6452F9009344EA /* ZooKeeperTests */,
 				A882D1211C6452F9009344EA /* ZooKeeperUITests */,
@@ -215,7 +223,7 @@
 				A882D1091C6452F9009344EA /* Assets.xcassets */,
 				A882D10B1C6452F9009344EA /* LaunchScreen.storyboard */,
 				A882D10E1C6452F9009344EA /* Info.plist */,
-				452178631C88F7EF00CBE647 /* Firebase.framework */,
+				4521786F1C89005600CBE647 /* Frameworks */,
 			);
 			path = ZooKeeper;
 			sourceTree = "<group>";

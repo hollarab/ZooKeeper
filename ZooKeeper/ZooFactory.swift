@@ -11,8 +11,6 @@ import Firebase
 
 public class ZooFactory {
     
-    private var ref:Firebase?
-    
     public static func zooFromJSONFileNamed(name:String) -> Zoo? {
         // Check to see if we have one in the docs dir
         var storePath:String!
@@ -128,15 +126,19 @@ public class ZooFactory {
 //MARK: - Firebase helpers
 extension ZooFactory {
     
-    convenience init(snapshot: FDataSnapshot) {
-        ref = snapshot.ref
-    }
-    
-    func toAnyObject() -> AnyObject {
-        return [
-            "name": name,
-            "addedByUser": addedByUser,
-            "completed": completed
-        ]
+    public static func pushZooToFirebase(rootRef:Firebase, zoo:Zoo) {
+
+        let animalsListRef = rootRef.childByAppendingPath("animals")
+        let staffListRef = rootRef.childByAppendingPath("staff")
+
+        for animal in zoo.animals {
+            let animalRef = animalsListRef.childByAppendingPath(animal.name)
+            animalRef.setValue(animal.toDictionary())
+        }
+        
+        for staff in zoo.staff {
+            let staffRef = staffListRef.childByAppendingPath(staff.name)
+            staffRef.setValue(staff.toDictionary())
+        }
     }
 }

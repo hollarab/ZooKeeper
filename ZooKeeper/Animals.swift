@@ -8,14 +8,7 @@
 
 import Foundation
 import UIKit
-
-protocol Quackable {
-    func quack()
-}
-
-protocol Spawnable {
-    func spawn()
-}
+import Firebase
 
 let dateFormatString = "dd-MMM-yy"
 
@@ -27,6 +20,9 @@ public class Animal {
     var currentWeight:Float?
     var birthday:NSDate?
     
+    var key:String!
+    var ref:Firebase?
+    
     var photoFileName:String?
     
     init(type:String, name:String, color:String, isMale:Bool) {
@@ -34,6 +30,21 @@ public class Animal {
         self.type = type
         self.color = color
         self.isMale = isMale
+        self.key = nil
+    }
+    
+    init(snapshot: FDataSnapshot) {
+        key = snapshot.key
+        ref = snapshot.ref
+        name = snapshot.value["name"] as! String
+        type = snapshot.value["type"] as! String
+        color = snapshot.value["color"] as! String
+        isMale = snapshot.value["isMale"] as! Bool
+        currentWeight = snapshot.value["currentWeight"] as? Float
+
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = dateFormatString
+        birthday = formatter.dateFromString(snapshot.value["birthday"] as! String)
     }
     
     deinit {
@@ -94,7 +105,7 @@ public class Animal {
     }
 }
 
-public class Duck : Animal, Quackable {
+public class Duck : Animal {
     
     public init(name:String, color:String, isMale:Bool) {
         super.init(type:"Duck", name:name, color:color, isMale:isMale)
@@ -105,7 +116,7 @@ public class Duck : Animal, Quackable {
     }
 }
 
-public class Fish : Animal, Spawnable {
+public class Fish : Animal {
     
     public init(name:String, color:String, isMale:Bool) {
         super.init(type:"Fish", name:name, color:color, isMale:isMale)

@@ -132,12 +132,12 @@ extension ZooFactory {
         let staffListRef = rootRef.childByAppendingPath("staff")
 
         for animal in zoo.animals {
-            let animalRef = animalsListRef.childByAppendingPath(animal.name)
+            let animalRef = animalsListRef.childByAutoId()
             animalRef.setValue(animal.toDictionary())
         }
         
         for staff in zoo.staff {
-            let staffRef = staffListRef.childByAppendingPath(staff.name)
+            let staffRef = staffListRef.childByAutoId()
             staffRef.setValue(staff.toDictionary())
         }
     }

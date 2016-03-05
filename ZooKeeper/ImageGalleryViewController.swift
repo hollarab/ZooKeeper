@@ -34,14 +34,15 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let rootRef = ZooData.sharedInstance.rootRef
-        let animalImagesRef = rootRef.childByAppendingPath("images/animals")
-        animalImagesRef.observeEventType(.Value, withBlock: { (snapshot: FDataSnapshot!) in
+        let animalAvatarsRef = ZooData.sharedInstance.animalAvatarRef
+        animalAvatarsRef.observeEventType(.Value, withBlock: { (snapshot: FDataSnapshot!) in
             self.animalImages.removeAll()
             for item in snapshot.children  {
                 guard let item = item as? FDataSnapshot,
-                      let value = item.value as? String else {continue}
-                self.animalImages.append(AnimalImage(key: item.key, imageString: value))
+                      let name = item.value["name"] as? String,
+                      let imageString = item.value["imageString"] as? String else { continue }
+                
+                self.animalImages.append(AnimalImage(key: name, imageString: imageString))
             }
             self.imageCollectionView.reloadData()
         })

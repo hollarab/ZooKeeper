@@ -68,7 +68,7 @@ class ZooTableViewController: UITableViewController {
 //        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
         let animal = Animal(type: "Duck", name: "Bubba", color: "blue", isMale: true)
-        let animalRefItem = animalsRef.childByAppendingPath(animal.name)
+        let animalRefItem = animalsRef.childByAutoId()
         animalRefItem.setValue(animal.toDictionary())
     }
 

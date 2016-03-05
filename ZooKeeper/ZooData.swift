@@ -21,6 +21,7 @@ public class ZooData {
     private let dataFileName = "zoo"
     
     let rootRef = Firebase(url: "https://\(kFirebaseAppId).firebaseio.com/")
+    let animalAvatarRef = Firebase(url: "https://\(kFirebaseAppId).firebaseio.com/avatars/animals")
     
     public var zoo:Zoo
     

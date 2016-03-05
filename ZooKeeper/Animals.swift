@@ -102,13 +102,13 @@ public class Animal {
     public func saveImage(image:UIImage) -> Bool {
         if let smallImage = image.normalizedImage().scaledInside(CGSize(width: 500, height: 500)),
             let data = UIImageJPEGRepresentation(smallImage, 0.8) {
-                let encodedString = data.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-                imageBase64String = encodedString
-                ref!.updateChildValues(["imageBase64String":encodedString])
-                let rootRef = ZooData.sharedInstance.rootRef
-                let animalImagesRef = rootRef.childByAppendingPath("images/animals/\(key)")
-                animalImagesRef.setValue(encodedString)
                 
+                self.imageBase64String = data.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+                ref!.updateChildValues(["imageBase64String":self.imageBase64String!])
+                
+                // Create object to store image and name
+                let avatarRef = ZooData.sharedInstance.animalAvatarRef.childByAppendingPath(key)
+                avatarRef.setValue([ "name":name, "imageString":self.imageBase64String!])
                 return true
         }
         print("failed to turn image into data")

@@ -19,11 +19,10 @@ public class Animal {
     var isMale:Bool
     var currentWeight:Float?
     var birthday:NSDate?
+    var imageBase64String:String?
     
     var key:String!
     var ref:Firebase?
-    
-    var photoFileName:String?
     
     init(type:String, name:String, color:String, isMale:Bool) {
         self.name = name
@@ -40,21 +39,44 @@ public class Animal {
         type = snapshot.value["type"] as! String
         color = snapshot.value["color"] as! String
         isMale = snapshot.value["isMale"] as! Bool
-        currentWeight = snapshot.value["currentWeight"] as? Float
-
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = dateFormatString
-        birthday = formatter.dateFromString(snapshot.value["birthday"] as! String)
+        
+        // when reading data, must decide to handle the optionals
+        if let weight =  snapshot.value["currentWeight"] as? Float
+            where weight > 0 {
+                currentWeight = weight
+        }
+        
+        if let bDayString = snapshot.value["birthday"] as? String
+            where !bDayString.isEmpty {
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = dateFormatString
+                self.birthday = formatter.dateFromString(bDayString)
+        }
+        
+        if let string = snapshot.value["imageBase64String"] as? String
+            where !string.isEmpty {
+                self.imageBase64String = string
+        }
     }
     
     deinit {
-        print("Oh no!")
+        print("Oh no \(name)!")
     }
     
     public func toDictionary() -> [String:AnyObject] {
-        return [ "type" : type, "name" : name, "isMale" : isMale,
-            "currentWeight":currentWeight ?? -1, "birthday" : birthdayDateString() ?? "",
-                "color":color,  "photoFileName": photoFileName ?? ""]
+        return [
+            "type" : type,
+            "name" : name,
+            "isMale" : isMale,
+            "color":color,
+            // Storing optionals - have to decide what "nil" means since we can't store that
+            "currentWeight":currentWeight ?? -1,            // use -1 for no value
+            "birthday" : birthdayDateString() ?? "",        // use empty string for no value
+            "imageBase64String": imageBase64String ?? ""]   // use empty string for no value
+    }
+    
+    public func updateInFB() {
+        ref!.updateChildValues(toDictionary())
     }
     
     private func birthdayDateString() -> String? {
@@ -77,32 +99,45 @@ public class Animal {
         return "I'm \(name) a \(isMale ? "boy" : "girl") \(color) \(type) Aminal"
     }
     
-    public func defaultImageName() -> String {
-        return type.lowercaseString
-    }
-    
-    public func hasImage() -> Bool {
-        return photoFileName != nil
-    }
-    
     public func saveImage(image:UIImage) -> Bool {
-        if let data = UIImageJPEGRepresentation(image, 0.8) {
-            photoFileName = NSUUID().UUIDString + ".jpg"
-            let path = pathToFileInDocumentsDirectory(photoFileName!)
-            print("writng to \(path)")
-            return data.writeToFile(path, atomically: true)
+        if let smallImage = image.normalizedImage().scaledInside(CGSize(width: 500, height: 500)),
+            let data = UIImageJPEGRepresentation(smallImage, 0.8) {
+                let encodedString = data.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+                imageBase64String = encodedString
+                ref!.updateChildValues(["imageBase64String":encodedString])
+                let rootRef = ZooData.sharedInstance.rootRef
+                let animalImagesRef = rootRef.childByAppendingPath("images/animals/\(key)")
+                animalImagesRef.setValue(encodedString)
+                
+                return true
         }
+        print("failed to turn image into data")
         return false
     }
     
-    public func loadImage() -> UIImage? {
-        print("reading from \(photoFileName ?? "no file")")
-        guard let filename = photoFileName,
-              let path = pathToExistingFileInDocumentsDirectory(filename),
-              let image = UIImage(contentsOfFile: path) else { return nil }
-
+    // NOTE: remove hasImage() and defaultImageName() functions
+    
+    /// Does a custom image exist for this animal?
+    public func hasCustomImage() -> Bool {
+        return imageBase64String != nil
+    }
+    
+    /// Returns the custom image or default image
+    public func getImage() -> UIImage? {
+        if let image = firebaseImage()?.normalizedImage() {
+            return image
+        }
+        return UIImage(named: type.lowercaseString)
+    }
+    
+    private func firebaseImage() -> UIImage? {
+        guard let string = imageBase64String,
+            let data = NSData(base64EncodedString: string, options: .IgnoreUnknownCharacters),
+            let image = UIImage(data: data) else { return nil }
+        
         return image
     }
+    
 }
 
 public class Duck : Animal {

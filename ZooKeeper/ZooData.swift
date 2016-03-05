@@ -25,27 +25,7 @@ public class ZooData {
     public var zoo:Zoo
     
     private init() {
-        
-//        if let zoo = ZooFactory.zooFromJSONFileNamed(dataFileName) {
-//            self.zoo = zoo
-//            ZooFactory.pushZooToFirebase(rootRef, zoo: zoo)
-//        } else {
             self.zoo = Zoo(animals: nil, staff: nil)
-//        }
-    }
-    
-    public func saveZoo() -> Bool {
-        
-        return true
-    }
-    
-    
-    private func saveLocal() -> Bool {
-        let result = ZooFactory.saveZoo(zoo, toFileNamed:dataFileName)
-        if result {
-            NSNotificationCenter.defaultCenter().postNotificationName(ZooDataNotifications.Updated.rawValue, object: nil)
-        }
-        return result
     }
 }
 

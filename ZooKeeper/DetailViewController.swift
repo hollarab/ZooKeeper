@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    weak var detailItem:AnyObject? {
+    var detailItem:AnyObject? {
         didSet {
             configureView()
         }
@@ -23,3 +23,4 @@ class DetailViewController: UIViewController {
     
     func configureView() {}
 }
+

@@ -20,7 +20,6 @@
 		45AD47E21C7120AE00862B5A /* NoSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD47E11C7120AE00862B5A /* NoSelectionViewController.swift */; };
 		45AD47E51C74E88400862B5A /* AnimalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD47E41C74E88400862B5A /* AnimalCollectionViewCell.swift */; };
 		45AD47E71C762B6100862B5A /* Zoo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD47E61C762B6100862B5A /* Zoo.swift */; };
-		45AD47E91C762B9A00862B5A /* ZooFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD47E81C762B9A00862B5A /* ZooFactory.swift */; };
 		45AD47EB1C76304000862B5A /* ZooFactoryTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD47EA1C76304000862B5A /* ZooFactoryTestCase.swift */; };
 		45AD47ED1C76314000862B5A /* ZooData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD47EC1C76314000862B5A /* ZooData.swift */; };
 		45AD47EF1C76329A00862B5A /* ZooDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AD47EE1C76329A00862B5A /* ZooDataTestCase.swift */; };
@@ -78,7 +77,6 @@
 		45AD47E11C7120AE00862B5A /* NoSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSelectionViewController.swift; sourceTree = "<group>"; };
 		45AD47E41C74E88400862B5A /* AnimalCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCollectionViewCell.swift; sourceTree = "<group>"; };
 		45AD47E61C762B6100862B5A /* Zoo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zoo.swift; sourceTree = "<group>"; };
-		45AD47E81C762B9A00862B5A /* ZooFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZooFactory.swift; sourceTree = "<group>"; };
 		45AD47EA1C76304000862B5A /* ZooFactoryTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZooFactoryTestCase.swift; sourceTree = "<group>"; };
 		45AD47EC1C76314000862B5A /* ZooData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZooData.swift; sourceTree = "<group>"; };
 		45AD47EE1C76329A00862B5A /* ZooDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZooDataTestCase.swift; sourceTree = "<group>"; };
@@ -256,7 +254,6 @@
 				A882D1331C64565F009344EA /* Animals.swift */,
 				A85310351C6F8E74009FF076 /* Staff.swift */,
 				45AD47E61C762B6100862B5A /* Zoo.swift */,
-				45AD47E81C762B9A00862B5A /* ZooFactory.swift */,
 				45AD47EC1C76314000862B5A /* ZooData.swift */,
 			);
 			name = Models;
@@ -403,7 +400,6 @@
 				45AD47E21C7120AE00862B5A /* NoSelectionViewController.swift in Sources */,
 				A89E0AF81C73F1CF008F952D /* TopMenuViewController.swift in Sources */,
 				A85310361C6F8E74009FF076 /* Staff.swift in Sources */,
-				45AD47E91C762B9A00862B5A /* ZooFactory.swift in Sources */,
 				45AD47E71C762B6100862B5A /* Zoo.swift in Sources */,
 				A89E0B011C74285B008F952D /* StaffCollectionViewCell.swift in Sources */,
 				A882D1341C64565F009344EA /* Animals.swift in Sources */,

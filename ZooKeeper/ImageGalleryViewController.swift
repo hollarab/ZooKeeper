@@ -7,6 +7,12 @@
 //
 
 import UIKit
+import Firebase
+
+struct AnimalImage {
+    var key:String
+    var imageString:String
+}
 
 class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -14,6 +20,8 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
     
     private static let storyboard = UIStoryboard(name: "Modals", bundle: nil)
 
+    var animalImages = [AnimalImage]()
+    
     static func instance() -> ImageGalleryViewController {
         return storyboard.instantiateViewControllerWithIdentifier("ImageGalleryViewController") as! ImageGalleryViewController
     }
@@ -21,6 +29,22 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         imageCollectionView.registerNib(UINib(nibName: "StaffCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "StaffCell")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let rootRef = ZooData.sharedInstance.rootRef
+        let animalImagesRef = rootRef.childByAppendingPath("images/animals")
+        animalImagesRef.observeEventType(.Value, withBlock: { (snapshot: FDataSnapshot!) in
+            self.animalImages.removeAll()
+            for item in snapshot.children  {
+                guard let item = item as? FDataSnapshot,
+                      let value = item.value as? String else {continue}
+                self.animalImages.append(AnimalImage(key: item.key, imageString: value))
+            }
+            self.imageCollectionView.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,18 +67,24 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
     */
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return animalImages.count
     }
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalCollectionViewCell
-            cell.nameLabel.text = "name"
+
+            let animalImage = animalImages[indexPath.row]
+            cell.nameLabel.text = animalImage.key
+            if let data = NSData(base64EncodedString: animalImage.imageString, options: .IgnoreUnknownCharacters),
+                let image = UIImage(data: data) {
+                    cell.animalImageView.image = image
+            }
             return cell
         } else {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StaffCell", forIndexPath: indexPath)

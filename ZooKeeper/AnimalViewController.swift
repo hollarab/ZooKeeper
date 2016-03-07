@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AnimalViewController: DetailViewController {
 
@@ -17,15 +18,24 @@ class AnimalViewController: DetailViewController {
     @IBOutlet weak var birthdayDatePicker: UIDatePicker!
     @IBOutlet var photoImageView: UIImageView!
     
+    var animalKey:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let key = animalKey where detailItem == nil {
+            let ref = ZooData.sharedInstance.rootRef.childByAppendingPath("animals/\(key)")
+            ref.observeEventType(.Value, withBlock: { (snapshot) -> Void in
+                self.detailItem = Animal(snapshot: snapshot)
+                self.configureView()
+            })
+        }
     }
     
     override func configureView() {

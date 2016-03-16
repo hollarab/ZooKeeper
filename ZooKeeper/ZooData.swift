@@ -7,23 +7,44 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 public class ZooData {
     public static let sharedInstance = ZooData()
     
     private let dataFileName = "zoo"
     
-    public var zoo:Zoo
-
+    public var coreDataStack:CoreDataStack
+    
     private init() {
-        if let zoo = ZooFactory.zooFromJSONFileNamed(dataFileName) {
-            self.zoo = zoo
-        } else {
-            self.zoo = Zoo(animals: nil, staff: nil)
+        guard let delegate = UIApplication.sharedApplication().delegate as? AppDelegate
+            else { fatalError("App Delegate not reachable")}
+
+        coreDataStack = delegate.coreDataStack
+        
+//        ZooFactory.insertAnimalsIntoContext(coreDataStack.mainContext, fromFilename: dataFileName)
+//        coreDataStack.saveContext(coreDataStack.mainContext)
+        
+        let animalFetch = NSFetchRequest(entityName: "Animal")
+        
+        do {
+            let fetchedAnimals = try coreDataStack.mainContext.executeFetchRequest(animalFetch) as! [Animal]
+            for animal in fetchedAnimals {
+                print("Got \(animal.name)")
+            }
+        } catch {
+            fatalError("Failed to fetch: \(error)")
         }
     }
     
-    public func saveZoo() -> Bool {
-        return ZooFactory.saveZoo(zoo, toFileNamed:dataFileName)
+    
+    func coreDataSaveMain() {
+        do {
+            try coreDataStack.mainContext.save()
+        } catch let e {
+            print(e)
+        }
     }
 }
+

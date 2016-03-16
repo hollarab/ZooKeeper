@@ -30,9 +30,9 @@ class StaffViewController: DetailViewController {
     
 
     override func configureView() {
-        if let staff = self.detailItem as? Staff where nameLabel != nil {
-            nameLabel?.text = staff.name
-        }
+//        if let staff = self.detailItem as? Staff where nameLabel != nil {
+//            nameLabel?.text = staff.name
+//        }
     }
 
 }

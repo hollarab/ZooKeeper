@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+    <entity name="Animal" representedClassName=".Animal" syncable="YES">
+        <attribute name="birthday" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentWeight" attributeType="Float" defaultValueString="-1" syncable="YES"/>
+        <attribute name="isMale" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
+        <relationship name="icon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EntityIcon" inverseName="animalIcons" inverseEntity="EntityIcon" syncable="YES"/>
+    </entity>
+    <entity name="EntityIcon" representedClassName=".EntityIcon" syncable="YES">
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="animalIcons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Animal" inverseName="icon" inverseEntity="Animal" syncable="YES"/>
+        <relationship name="staffIcons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Staff" inverseName="icon" inverseEntity="Staff" syncable="YES"/>
+    </entity>
+    <entity name="Staff" representedClassName=".Staff" syncable="YES">
+        <attribute name="birthday" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isMale" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
+        <relationship name="icon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EntityIcon" inverseName="staffIcons" inverseEntity="EntityIcon" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Animal" positionX="-36" positionY="27" width="128" height="150"/>
+        <element name="EntityIcon" positionX="-54" positionY="-9" width="128" height="90"/>
+        <element name="Staff" positionX="-18" positionY="54" width="128" height="120"/>
+    </elements>
+</model>

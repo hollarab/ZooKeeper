@@ -33,13 +33,16 @@ class AnimalViewController: DetailViewController {
         
         nameTextField?.text = animal.name
         colorTextField?.text = animal.color
-        if let weight = animal.currentWeight {
-            weightTextField?.text = NSString(format: "%0.2", weight) as String
+        if animal.currentWeight > 0 {
+            weightTextField?.text = NSString(format: "%0.2", animal.currentWeight) as String
         } else {
             weightTextField?.text = "unknown"
         }
         genderSegmentedControl?.selectedSegmentIndex = animal.isMale ? 0 : 1
-        photoImageView.image = animal.loadImage() ?? UIImage(named: "camera")
+        photoImageView.image = animal.iconOrDefaultImage()
+        if animal.birthday > 0 {
+            birthdayDatePicker.setDate(NSDate(timeIntervalSince1970: animal.birthday), animated: true)
+        }
     }
 
     
@@ -48,17 +51,21 @@ class AnimalViewController: DetailViewController {
         
         animal.name = nameTextField.text!
         animal.color = colorTextField.text!
-        animal.currentWeight = Float(weightTextField.text!)
+        if let weight = Float(weightTextField.text!) {
+            print("setting weight to \(weight)")
+            animal.currentWeight = weight
+        }
         animal.isMale = genderSegmentedControl.selectedSegmentIndex == 0 ? true : false
-        animal.birthday = birthdayDatePicker.date
-        ZooData.sharedInstance.saveZoo()
+        animal.birthday = birthdayDatePicker.date.timeIntervalSince1970
+
+        ZooData.sharedInstance.coreDataSaveMain()
     }
     
     
     @IBAction func photoButtonTouched(sender: AnyObject) {
         guard let animal = detailItem as? Animal else { return }
         
-        if !animal.hasImage() {
+        if !animal.hasCustomImage() {
             ABHPresentImageCapture(self)
         } else {
             ABHAlertFor(self, title: "Replace photo", message: "Are you sure you want to replace this image?", okCallback: { () -> Void in
@@ -87,8 +94,8 @@ extension AnimalViewController: UINavigationControllerDelegate, UIImagePickerCon
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage,
             let animal = detailItem as? Animal {
                 photoImageView.image = image
-                animal.saveImage(image)
-                ZooData.sharedInstance.saveZoo()
+                animal.saveIconImage(image)
+                ZooData.sharedInstance.coreDataSaveMain()
         }
     }
     

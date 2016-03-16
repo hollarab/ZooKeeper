@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 let animalSection = 0
 let staffSection = 1
@@ -14,7 +15,7 @@ let staffSection = 1
 class ZooTableViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var zoo:Zoo!
+    var fetchedResultsController: NSFetchedResultsController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +28,33 @@ class ZooTableViewController: UITableViewController {
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
-        zoo = ZooData.sharedInstance.zoo
+        initializeFetchedResultsController()
         tableView.rowHeight = 85.0
     }
+    
+    func initializeFetchedResultsController() {
+        let request = NSFetchRequest(entityName: "Animal")
+        let nameSort = NSSortDescriptor(key: "name", ascending: true)
+        request.sortDescriptors = [nameSort]
+        
+        let moc = ZooData.sharedInstance.coreDataStack.mainContext
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: "rootCache")
+
+        // Not yet
+//        self.fetchedResultsController.delegate = self
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
+    }
+
 
     override func viewWillAppear(animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
         super.viewWillAppear(animated)
+        // TODO!
         tableView.reloadData()
     }
 
@@ -53,16 +74,12 @@ class ZooTableViewController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var detailItem:AnyObject?
-
-        let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+        
+        let controller = (segue.destinationViewController as! UINavigationController).topViewController
+            as! DetailViewController
 
         if let indexPath = self.tableView.indexPathForSelectedRow {
-            if segue.identifier == "animalDetail" {
-                detailItem = zoo.animals[indexPath.row]
-            } else if segue.identifier == "staffDetail" {
-                detailItem = zoo.staff[indexPath.row]
-                (controller as! StaffViewController).delegate = self
-            }
+            detailItem = self.fetchedResultsController.objectAtIndexPath(indexPath)
         }
         
         controller.detailItem = detailItem
@@ -73,33 +90,21 @@ class ZooTableViewController: UITableViewController {
     // MARK: - Table View
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return self.fetchedResultsController.sections!.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case animalSection:
-            return zoo.animals.count
-        case staffSection:
-            return zoo.staff.count
-        default:
-            return 0
-        }
+        guard let sections = self.fetchedResultsController.sections else {return 0}
+        
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalTableViewCell
-
-            let animal = zoo.animals[indexPath.row]
-            cell.configureViewForAnimal(animal)
+        let cell = tableView.dequeueReusableCellWithIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalTableViewCell
+        let animal = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Animal
+        cell.configureViewForAnimal(animal)
         return cell
-        } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("StaffCell", forIndexPath: indexPath) as! StaffTableViewCell
-            let staff = zoo.staff[indexPath.row]
-            cell.configureViewForStaff(staff)
-            return cell
-        }
     }
 
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

@@ -11,6 +11,7 @@ import Firebase
 
 struct AnimalImage {
     var key:String
+    var name:String
     var imageString:String
 }
 
@@ -42,7 +43,7 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
                       let name = item.value["name"] as? String,
                       let imageString = item.value["imageString"] as? String else { continue }
                 
-                self.animalImages.append(AnimalImage(key: name, imageString: imageString))
+                self.animalImages.append(AnimalImage(key: item.key, name: name, imageString: imageString))
             }
             self.imageCollectionView.reloadData()
         })
@@ -81,7 +82,7 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalCollectionViewCell
 
             let animalImage = animalImages[indexPath.row]
-            cell.nameLabel.text = animalImage.key
+            cell.nameLabel.text = animalImage.name
             if let data = NSData(base64EncodedString: animalImage.imageString, options: .IgnoreUnknownCharacters),
                 let image = UIImage(data: data) {
                     cell.animalImageView.image = image
